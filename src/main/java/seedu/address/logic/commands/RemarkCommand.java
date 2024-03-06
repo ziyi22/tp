@@ -1,6 +1,9 @@
 package seedu.address.logic.commands;
 
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+
+import java.util.List;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
@@ -9,11 +12,9 @@ import seedu.address.model.Model;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Remark;
 
-import java.security.SecureRandom;
-import java.util.List;
-
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-
+/**
+ * Adds the remark of an existing person in the address book.
+ */
 public class RemarkCommand extends Command {
 
     public static final String COMMAND_WORD = "remark";
@@ -37,6 +38,10 @@ public class RemarkCommand extends Command {
     private final Index index;
     private final Remark remark;
 
+    /**
+     * @param index of the person in the filtered person list to edit.
+     * @param remark of the person to be added.
+     */
     public RemarkCommand(Index index, Remark remark) {
         requireAllNonNull(index, remark);
 
