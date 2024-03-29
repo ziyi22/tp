@@ -69,9 +69,14 @@ public class Task {
         return this.isDone;
     }
 
-    public void setDone() {
-        this.isDone = true;
-        this.personInCharge.setTask(null);
+    /**
+     * Marks an immutable task as done.
+     * @return Task an immutable Task instance
+     */
+    public Task markDone() {
+        Task doneTask = new Task(this.taskTitle, this.deadline, true);
+        doneTask.setPersonInCharge(this.personInCharge);
+        return doneTask;
     }
 
     /**

@@ -156,13 +156,30 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Replaces the given task {@code target} in the list with {@code editedTask}.
+     * {@code target} must exist in the address book.
+     * The task identity of {@code editedTask} must not be the same as another existing task in the address book.
+     */
+    public void setTask(Task target, Task editedTask) {
+        requireNonNull(editedTask);
+
+        tasks.setTask(target, editedTask);
+        indicateModified();
+    }
+
+    /**
      * Assign a task to a person by adding task to the address book,
      * setting the person's task field and adding the task's personInCharge.
      */
     public void assignTask(Task task, Person pic) {
-        tasks.add(task);
-        task.setPersonInCharge(pic);
-        pic.setTask(task);
+        Person editedPerson = new Person(pic.getName(), pic.getPhone(), pic.getEmail(),
+                pic.getAddress(), pic.getDepartment(), pic.getTags(), pic.getEfficiency());
+
+        addTask(task);
+        task.setPersonInCharge(editedPerson);
+        editedPerson.setTask(task);
+
+        setPerson(pic, editedPerson);
         indicateModified();
     }
 
@@ -180,7 +197,12 @@ public class AddressBook implements ReadOnlyAddressBook {
      * Marks an assigned task as done.
      */
     public void markTask(Task task) {
-        task.setDone();
+        Task editedTask = task.markDone();
+        Person target = editedTask.getPersonInCharge();
+        Person editedPerson = new Person(target.getName(), target.getPhone(), target.getEmail(),
+                target.getAddress(), target.getDepartment(), target.getTags(), target.getEfficiency());
+        setTask(task, editedTask);
+        setPerson(target, editedPerson);
         indicateModified();
     }
 
