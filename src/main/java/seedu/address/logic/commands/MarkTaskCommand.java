@@ -53,7 +53,7 @@ public class MarkTaskCommand extends Command {
         requireNonNull(model);
         List<Person> personList = model.getFilteredPersonList();
 
-        if (index.getOneBased() >= personList.size()) {
+        if (index.getZeroBased() >= personList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 

@@ -133,6 +133,13 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void reassignTask(Task task, Person assignedFrom, Person assignedTo) {
+        requireAllNonNull(task, assignedFrom, assignedTo);
+        versionedAddressBook.reassignTask(task, assignedFrom, assignedTo);
+
+    }
+
+    @Override
     public void markTask(Task task) {
         requireNonNull(task);
         versionedAddressBook.markTask(task);

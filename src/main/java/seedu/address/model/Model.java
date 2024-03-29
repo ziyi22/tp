@@ -103,6 +103,11 @@ public interface Model {
     void assignTask(Task task, Person person);
 
     /**
+     * Reassigns task from one person to another.
+     */
+    void reassignTask(Task task, Person assignedFrom, Person assignedTo);
+
+    /**
      * Marks an assigned task as done.
      */
     void markTask(Task task);
