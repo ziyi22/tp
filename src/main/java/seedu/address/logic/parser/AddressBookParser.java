@@ -109,7 +109,7 @@ public class AddressBookParser {
 
         case ReassignTaskCommand.COMMAND_WORD:
             return new ReassignTaskCommandParser().parse(arguments);
-        
+
         case EditDeadlineCommand.COMMAND_WORD:
             return new EditDeadlineCommandParser().parse(arguments);
 
@@ -118,5 +118,4 @@ public class AddressBookParser {
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
     }
-
 }
