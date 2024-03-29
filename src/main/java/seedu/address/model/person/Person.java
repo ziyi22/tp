@@ -98,14 +98,6 @@ public class Person {
     }
 
     /**
-     * Check if person has specified task assigned
-     * @return boolean
-     */
-    public boolean hasTask() {
-        return this.task != null;
-    }
-
-    /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
      */

@@ -59,7 +59,7 @@ public class EditDeadlineCommand extends Command {
 
         Person taskOwner = personList.get(index.getZeroBased());
 
-        if (!taskOwner.hasTask()) {
+        if (!taskOwner.isBusy()) {
             throw new CommandException(MESSAGE_TASK_DOES_NOT_EXIST);
         }
 
