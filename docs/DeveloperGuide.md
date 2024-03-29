@@ -255,6 +255,12 @@ _{more aspects and alternatives to be added}_
 
 _{Explain here how the data archiving feature will be implemented}_
 
+### \[Proposed\] Efficiency Leaderboard
+HR will be able to view the top performing staff on a leaderboard
+
+#### Proposed Implementation
+1. List of unique people will be fetched and sorted based on efficiency
+2. Top 3/5/10 performing people will be showcased on the leaderboard
 
 --------------------------------------------------------------------------------------------------------------------
 

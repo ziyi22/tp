@@ -12,7 +12,7 @@ import seedu.address.model.person.Person;
 public class Task {
     private final String taskTitle;
 
-    private final Deadline deadline;
+    private Deadline deadline;
 
     private Person personInCharge;
     private boolean isDone;
@@ -39,6 +39,10 @@ public class Task {
         this.taskTitle = taskTitle;
         this.deadline = deadline;
         this.isDone = isDone;
+    }
+
+    public void editDeadline(Deadline deadline) {
+        this.deadline = deadline;
     }
 
     public String getTaskTitle() {
