@@ -65,4 +65,11 @@ public class Messages {
         return task.getTaskTitle().toString();
     }
 
+    /**
+     * Returns the deadline of a task.
+     */
+    public static String printDeadline(Task task) {
+        return task.getDeadline().toString();
+    }
+
 }
