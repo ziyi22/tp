@@ -41,8 +41,15 @@ public class Task {
         this.isDone = isDone;
     }
 
-    public void editDeadline(Deadline deadline) {
-        this.deadline = deadline;
+    /**
+     * Edit the deadline of the task.
+     * @param deadline new deadline of the task.
+     * @return an immutable Task instance.
+     */
+    public Task editDeadline(Deadline deadline) {
+        Task editedTask = new Task(this.taskTitle, deadline, this.isDone());
+        editedTask.setPersonInCharge(this.personInCharge);
+        return editedTask;
     }
 
     public String getTaskTitle() {

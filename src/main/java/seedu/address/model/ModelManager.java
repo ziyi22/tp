@@ -127,6 +127,13 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void setTask(Task target, Task editedTask) {
+        requireAllNonNull(target, editedTask);
+
+        versionedAddressBook.setTask(target, editedTask);
+    }
+
+    @Override
     public void assignTask(Task task, Person assignedTo) {
         requireAllNonNull(task, assignedTo);
         versionedAddressBook.assignTask(task, assignedTo);
