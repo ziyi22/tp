@@ -64,7 +64,8 @@ public class EditDeadlineCommand extends Command {
         }
 
         Task task = taskOwner.getTask();
-        task.editDeadline(deadline);
+        Task editedTask = task.editDeadline(deadline);
+        model.setTask(task, editedTask);
         model.commitAddressBook();
         return new CommandResult(String.format(MESSAGE_MARK_TASK_SUCCESS,
                 Messages.printName(taskOwner), Messages.printDeadline(task)));
