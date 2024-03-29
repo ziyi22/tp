@@ -69,4 +69,8 @@ shadowJar {
     archiveFileName = 'EffiTrack.jar'
 }
 
+run {
+    enableAssertions = true
+}
+
 defaultTasks 'clean', 'test'

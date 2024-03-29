@@ -35,7 +35,7 @@ Given below is a quick overview of main components and how they interact with ea
 
 **Main components of the architecture**
 
-**`Main`** (consisting of classes [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java)) is in charge of the app launch and shut down.
+**`Main`** (consisting of classes [`Main`](https://github.com/AY2324S2-CS2103T-T14-1/tp/blob/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/AY2324S2-CS2103T-T14-1/tp/blob/master/src/main/java/seedu/address/MainApp.java)) is in charge of the app launch and shut down.
 * At app launch, it initializes the other components in the correct sequence, and connects them up with each other.
 * At shut down, it shuts down the other components and invokes cleanup methods where necessary.
 
@@ -67,13 +67,13 @@ The sections below give more details of each component.
 
 ### UI component
 
-The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
+The **API** of this component is specified in [`Ui.java`](https://github.com/AY2324S2-CS2103T-T14-1/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
 
 <puml src="diagrams/UiClassDiagram.puml" alt="Structure of the UI Component"/>
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
 
-The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2324S2-CS2103T-T14-1/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2324S2-CS2103T-T14-1/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
 The `UI` component,
 
@@ -84,7 +84,7 @@ The `UI` component,
 
 ### Logic component
 
-**API** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+**API** : [`Logic.java`](https://github.com/AY2324S2-CS2103T-T14-1/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
 
 Here's a (partial) class diagram of the `Logic` component:
 
@@ -116,7 +116,7 @@ How the parsing works:
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
 ### Model component
-**API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
+**API** : [`Model.java`](https://github.com/AY2324S2-CS2103T-T14-1/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
 <puml src="diagrams/ModelClassDiagram.puml" width="450" />
 
@@ -139,12 +139,12 @@ The `Model` component,
 
 ### Storage component
 
-**API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
+**API** : [`Storage.java`](https://github.com/AY2324S2-CS2103T-T14-1/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
 
 <puml src="diagrams/StorageClassDiagram.puml" width="550" />
 
 The `Storage` component,
-* can save both address book data and user preference data in JSON format, and read them back into corresponding objects.
+* can save both EffiTrack data and user preference data in JSON format, and read them back into corresponding objects.
 * inherits from both `AddressBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
 * depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
 
@@ -158,11 +158,11 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
-### \[Proposed\] Undo/redo feature
+### \[Implemented\] Undo/redo feature
 
-#### Proposed Implementation
+#### Current Implementation
 
-The proposed undo/redo mechanism is facilitated by `VersionedAddressBook`. It extends `AddressBook` with an undo/redo history, stored internally as an `addressBookStateList` and `currentStatePointer`. Additionally, it implements the following operations:
+The implemented undo/redo mechanism is facilitated by `VersionedAddressBook`. It extends `AddressBook` with an undo/redo history, stored internally as an `addressBookStateList` and `currentStatePointer`. Additionally, it implements the following operations:
 
 * `VersionedAddressBook#commit()` — Saves the current address book state in its history.
 * `VersionedAddressBook#undo()` — Restores the previous address book state from its history.
@@ -291,24 +291,26 @@ outdated systems, EffiTrack offers a centralized platform for easy and accurate 
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​        | I can…​                                              | So that I can…​                                                         |
-|----------|---------------|-----------------------------------------------------|------------------------------------------------------------------------|
-| `* * *`  | HR Manager    | assign tasks to employees                           | effortlessly assign tasks to employees, ensuring clear communication of expectations and responsibilities.|
-| `* * *`  | HR Manager    | add or remove employees                             | maintain accurate and up-to-date employee records with ease.           |
-| `* * *`  | HR Manager    | displays tasks with deadline within a week from now | efficiently plan and prioritize tasks based on their urgency.          |
-| `* * *`  | HR Manager    | change person in charge of a task                   | easily change the person in charge of a task, ensuring smooth transition of responsibilities without disrupting workflow.|
-| `* * *`  | HR Manager    | change the deadline for an existing task            | adjust deadlines as needed to accommodate changing priorities or unforeseen circumstances without any hassle.|
-| `* * *`  | HR Manager    | set deadlines for tasks                             | easily set deadlines for tasks, enabling precise scheduling and effective time management.|
-| `* * *`  | HR Manager    | assign employees to departments                     | organize teams effectively and foster better collaboration.             |
-| `* *`  | HR Manager      | perform flexible searches                           | obtain search results even if one character matches.                    |
-| `* *`  | HR Manager      | sort the employee list based on their efficiency    | quickly sort and identify employees based on efficiency metrics, such as productivity levels, task completion rates, or performance evaluations.|
-| `* *`  | HR Manager      | mark assigned task as done                          | efficiently mark tasks as done, providing a clear indication of progress and facilitating effective task tracking and management.|
-| `* *`  | HR Manager      | filter out poor performing employees                | identify and filter out underperforming employees based on key performance indicators, allowing for targeted intervention and support.|
-| `* *`  | HR Manager      | set priority tags for assignments                   | assign priority levels to tasks, ensuring critical tasks receive appropriate attention and resources.|
-| `*`  | HR Manager        | generate efficiency reports highlighting significant changes | make informed decisions and strategic plans based on comprehensive performance insights.|
-| `*`  | HR Manager        | compare efficiency between departments               | identify trends, best practices, and areas for improvement.              |
-| `*`  | HR Manager        | access a simpler interface                           | navigate the system effortlessly and access key information without any complexity.|
-| `*`  | HR Manager        | track real time progress of assignments              | I can monitor the progress of assignments, facilitating timely intervention and resource allocation as necessary.|
+| Priority | As a …​        | I can…​                                                      | So that I can…​                                                                                                                                  |
+|----------|---------------|--------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+| `* * *`  | HR Manager    | assign tasks to employees                                    | effortlessly assign tasks to employees, ensuring clear communication of expectations and responsibilities.                                       |
+| `* * *`  | HR Manager    | add or remove employees                                      | maintain accurate and up-to-date employee records with ease.                                                                                     |
+| `* * *`  | HR Manager    | displays tasks with deadline within a week from now          | efficiently plan and prioritize tasks based on their urgency.                                                                                    |
+| `* * *`  | HR Manager    | change person in charge of a task                            | easily change the person in charge of a task, ensuring smooth transition of responsibilities without disrupting workflow.                        |
+| `* * *`  | HR Manager    | change the deadline for an existing task                     | adjust deadlines as needed to accommodate changing priorities or unforeseen circumstances without any hassle.                                    |
+| `* * *`  | HR Manager    | set deadlines for tasks                                      | easily set deadlines for tasks, enabling precise scheduling and effective time management.                                                       |
+| `* * *`  | HR Manager    | assign employees to departments                              | organize teams effectively and foster better collaboration.                                                                                      |
+| `* *`  | HR Manager      | perform flexible searches                                    | obtain search results even if one character matches.                                                                                             |
+| `* *`  | HR Manager      | sort the employee list based on their efficiency             | quickly sort and identify employees based on efficiency metrics, such as productivity levels, task completion rates, or performance evaluations. |
+| `* *`  | HR Manager      | mark assigned task as done                                   | efficiently mark tasks as done, providing a clear indication of progress and facilitating effective task tracking and management.                |
+| `* *`  | HR Manager      | filter out poor performing employees                         | identify and filter out underperforming employees based on key performance indicators, allowing for targeted intervention and support.           |
+| `* *`  | HR Manager      | set priority tags for assignments                            | assign priority levels to tasks, ensuring critical tasks receive appropriate attention and resources.                                            |
+| `*`  | HR Manager        | generate efficiency reports highlighting significant changes | make informed decisions and strategic plans based on comprehensive performance insights.                                                         |
+| `*`  | HR Manager        | compare efficiency between departments                       | identify trends, best practices, and areas for improvement.                                                                                      |
+| `*`  | HR Manager        | access a simpler interface                                   | navigate the system effortlessly and access key information without any complexity.                                                              |
+| `*`  | HR Manager        | track real time progress of assignments                      | monitor the progress of assignments, facilitating timely intervention and resource allocation as necessary.                                      |
+| `*`  | HR Manager        | undo and redo my commands                                    | easily correct mistakes or revert changes.                                                                                                       |
+| `*`  | HR Manager        | view my command history                                      | recall commands I have executed.                                                                                                                 |
 
 *{More to be added}*
 
