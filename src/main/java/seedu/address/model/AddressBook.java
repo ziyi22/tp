@@ -172,7 +172,8 @@ public class AddressBook implements ReadOnlyAddressBook {
      * setting the person's task field and adding the task's personInCharge.
      */
     public void assignTask(Task task, Person pic) {
-        Person editedPerson = new Person(pic.getName(), pic.getPhone(), pic.getEmail(), pic.getAddress(), pic.getDepartment(), pic.getTags(), pic.getEfficiency());
+        Person editedPerson = new Person(pic.getName(), pic.getPhone(), pic.getEmail(),
+                pic.getAddress(), pic.getDepartment(), pic.getTags(), pic.getEfficiency());
 
         addTask(task);
         task.setPersonInCharge(editedPerson);
@@ -188,7 +189,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void markTask(Task task) {
         Task editedTask = task.markDone();
         Person target = editedTask.getPersonInCharge();
-        Person editedPerson = new Person(target.getName(), target.getPhone(), target.getEmail(), target.getAddress(), target.getDepartment(), target.getTags(), target.getEfficiency());
+        Person editedPerson = new Person(target.getName(), target.getPhone(), target.getEmail(),
+                target.getAddress(), target.getDepartment(), target.getTags(), target.getEfficiency());
         setTask(task, editedTask);
         setPerson(target, editedPerson);
         indicateModified();
