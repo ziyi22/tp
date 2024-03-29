@@ -14,7 +14,7 @@ public class Deadline {
 
     public static final String MESSAGE_CONSTRAINTS = "Deadline should be in the format: dd-MM-yyyy HHmm";
     public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy HHmm");
-    public final LocalDateTime dateTime;
+    private LocalDateTime dateTime;
 
     /**
      * Constructs a {@code Deadline} using Local Date Time
@@ -37,6 +37,9 @@ public class Deadline {
         }
     }
 
+    public LocalDateTime getDateTime() {
+        return this.dateTime;
+    }
     @Override
     public String toString() {
         return dateTime.format(FORMATTER);

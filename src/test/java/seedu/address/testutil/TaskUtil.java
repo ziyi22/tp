@@ -2,20 +2,32 @@ package seedu.address.testutil;
 
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_OWNER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TO;
 
 import seedu.address.logic.commands.AssignTaskCommand;
+import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Task;
 
 /**
  * A utility class for Task.
  */
 public class TaskUtil {
+
     /**
      * Returns an add command string for adding the {@code person}.
      */
     public static String getAssignTaskCommand(Task task, int index) {
         return AssignTaskCommand.COMMAND_WORD + " " + getTaskDetails(task, index);
+    }
+
+    /**
+     * Returns an edit deadline command string.
+     */
+    public static String getEditDeadlineCommand(int index, Deadline deadline) {
+        return AssignTaskCommand.COMMAND_WORD + " "
+                + PREFIX_TASK_OWNER + index + " "
+                + PREFIX_DEADLINE + deadline.toString();
     }
 
     /**
