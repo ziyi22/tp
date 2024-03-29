@@ -251,9 +251,55 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 _{more aspects and alternatives to be added}_
 
-### \[Proposed\] Data archiving
 
-_{Explain here how the data archiving feature will be implemented}_
+### \[Implemented\] Assign task feature
+
+#### Current Implementation
+
+The implemented assign task mechanism is facilitated by `AddressBook`. 
+
+* `AddressBook#UniquePersonList`: Represents the list of persons stored in the address book.
+* `AddressBook#UniqueTaskList`: Represents the list of tasks assigned within the address book. 
+
+Given below is an example usage scenario and how the assign task features works.
+
+1. Ui
+   * The user executes the command `assign task/Proposal by/20-05-2024 2359 to/2` to assign a task named "Proposal" with a specified deadline to the 2nd person in the address book.
+   
+2. Parser
+   * The input command is parsed by the `AddressBookParser` component.
+   * The `assign` command keyword triggers the `AssignTaskCommandParser` to extract task details (name, deadline) and the index of the person to assign the task to.
+   * By parsing in `AssignTaskCommandParser`, a `Task` object is created to encapsulate the task details and returns an `AssignTaskCommand` object representing the command to assign the task.
+   
+3. Logic execution
+   *  The Command object - `AssignTaskCommand` is executed in the `LogicManager`.
+   *  The `AssignTaskCommand` invokes the `assignTask` method in the `Model` component.
+
+The following sequence diagram shows how an assign task operation goes through the `Logic` component:
+
+<puml src="diagrams/AssignTaskSequenceDiagram-Logic.puml" alt="AssignTaskSequenceDiagram-Logic" />
+
+3. Model operation
+   * The `model#assignTask` internally triggers the `AddressBook#assignTask` to:
+     * a. The `Task` is added to the `UniqueTaskList` in the address book.
+     * b. Set the person in charge of the `Task` to the identified person.
+     * c. Set the `Person`'s task to the specified task.
+
+The following sequence diagram shows how an assign task operation goes through the `Model` component:
+
+<puml src="diagrams/AssignTaskSequenceDiagram-Model.puml" alt="AssignTaskSequenceDiagram-Model" />
+
+#### Design considerations:
+**Aspect: How assign task executes:**
+
+* **Alternative 1 (current choice):** Saves all tasks in an additional task list.
+    * Pros: Provides a centralized task management system independent, making it easier to track and manage tasks across different persons..
+    * Cons: Each task need to store additional information, such as the person in charge, leading to redundancy if not managed efficiently.
+
+* **Alternative 2:** Add task list as a field for each person.
+    * Pros: Easy to implement.
+    * Cons: Increases complexity in managing and updating task lists, especially in scenarios involving task delegation or reassignment.
+
 
 
 --------------------------------------------------------------------------------------------------------------------
