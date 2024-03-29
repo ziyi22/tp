@@ -65,9 +65,10 @@ public class Task {
         return this.isDone;
     }
 
-    public void setDone() {
-        this.isDone = true;
-        this.personInCharge.setTask(null);
+    public Task markDone() {
+        Task doneTask = new Task(this.taskTitle, this.deadline, true);
+        doneTask.setPersonInCharge(this.personInCharge);
+        return doneTask;
     }
 
     /**
