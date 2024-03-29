@@ -411,7 +411,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 3c. The new deadline is before the current date.
   * 3c1. AddressBook shows an error message. 
     
-    * Use case resumes at step2 .
+    * Use case resumes at step 2.
+   
+* 3d. The given index does not have a task assigned.
+
+  * 3d1. AddressBook shows an error message
+ 
+    * Use case resumes at step 2.      
 
 
 **Use case: Assign a task**
