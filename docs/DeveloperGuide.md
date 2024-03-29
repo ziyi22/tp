@@ -301,6 +301,12 @@ The following sequence diagram shows how an assign task operation goes through t
     * Cons: Increases complexity in managing and updating task lists, especially in scenarios involving task delegation or reassignment.
 
 
+### \[Proposed\] Efficiency Leaderboard
+HR will be able to view the top performing staff on a leaderboard
+
+#### Proposed Implementation
+1. List of unique people will be fetched and sorted based on efficiency
+2. Top 3/5/10 performing people will be showcased on the leaderboard
 
 --------------------------------------------------------------------------------------------------------------------
 

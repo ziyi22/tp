@@ -2,7 +2,7 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_OWNER;
 
 import java.util.List;
@@ -13,39 +13,39 @@ import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
+import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Task;
 
 /**
  * Mark tasks done by employees
  */
-public class MarkTaskCommand extends Command {
+public class EditDeadlineCommand extends Command {
 
-    public static final String COMMAND_WORD = "mark";
-    public static final String MESSAGE_MARK_TASK_SUCCESS = "Marked %1$s's task %2$s as done";
+    public static final String COMMAND_WORD = "edit_deadline";
+    public static final String MESSAGE_MARK_TASK_SUCCESS = "Deadline for %1$s's task changed to %2$s";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Mark the task assigned to the identified person as done.\n"
+            + ": Change the deadline of the task of a user.\n"
             + "Parameters: "
-            + PREFIX_TASK + "TASK "
             + PREFIX_TASK_OWNER + "INDEX (must be a positive integer)\n"
+            + PREFIX_DEADLINE + "dd-MM-yyyy HHmm \n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_TASK + "Complete Project Proposal "
-            + PREFIX_TASK_OWNER + "1";
+            + PREFIX_TASK_OWNER + "1 "
+            + PREFIX_DEADLINE + "22-04-2024 2359 ";
 
-    public static final String MESSAGE_TASK_DOES_NOT_EXIST = "%s has not been assigned this Task. "
+    public static final String MESSAGE_TASK_DOES_NOT_EXIST = "%s does not have a Task. "
             + "Please select another Task";
-    private final String taskName;
     private final Index index;
 
+    private final Deadline deadline;
+
     /**
-     * Mark task of a existing person in the address book as done.
-     * @param taskName
-     * @param index
+     * Change the deadline of the task of a user.
      */
-    public MarkTaskCommand(String taskName, Index index) {
-        requireAllNonNull(index, taskName);
-        this.taskName = taskName;
+    public EditDeadlineCommand(Index index, Deadline deadline) {
+        requireAllNonNull(index, deadline);
         this.index = index;
+        this.deadline = deadline;
     }
 
     @Override
@@ -53,21 +53,21 @@ public class MarkTaskCommand extends Command {
         requireNonNull(model);
         List<Person> personList = model.getFilteredPersonList();
 
-        if (index.getZeroBased() >= personList.size()) {
+        if (index.getOneBased() >= personList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
         Person taskOwner = personList.get(index.getZeroBased());
 
-        if (!taskOwner.hasTask(taskName)) {
-            throw new CommandException(String.format(MESSAGE_TASK_DOES_NOT_EXIST, Messages.printName(taskOwner)));
+        if (!taskOwner.isBusy()) {
+            throw new CommandException(MESSAGE_TASK_DOES_NOT_EXIST);
         }
-        Task task = taskOwner.getTask();
 
-        model.markTask(task);
+        Task task = taskOwner.getTask();
+        task.editDeadline(deadline);
         model.commitAddressBook();
         return new CommandResult(String.format(MESSAGE_MARK_TASK_SUCCESS,
-                Messages.printName(taskOwner), Messages.printTask(task)));
+                Messages.printName(taskOwner), Messages.printDeadline(task)));
 
     }
 }

@@ -200,6 +200,16 @@ Format: `assign task/task title by/dd-MM-yyyy HHmm to/INDEX`
 Examples:
 * `assign task/Complete Project Proposal by/20-04-2024 2359 to/1` Assign the 'Complete Project Proposal' task to the first person in the address book.
 
+### Reassigning a task: `reassign`
+
+Reassign a specific task from one person to another.
+
+Format `reassign from/FROMINDEX to/TONDEX`
+
+* Assigns the task, which was previously assigned to person at the specified `FROMINDEX`, to the person at the specified `TOINDEX`
+* The index refers to the index number shown in the displayed employee list.
+* The index **must be a positive integer** 1, 2, 3, …​
+
 ### Marking a task : `mark`
 
 Mark the specified task as done.
@@ -286,6 +296,7 @@ Action     | Format, Examples
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [d/DEPARTMENT] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Assign Task** | `assign task/TASK TITLE by/dd-MM-yyyy to/INDEX`<br> e.g., `assign task/Complete Project Proposal by/22-05-2023 2359 to/1`
+**Reassign Task** | `reassign from/FROMINDEX to/TOINDEX`<br> e.g., `reassign from/2 to/1`
 **Mark Task**   | `mark task/TASK o/INDEX` <br> e.g. `mark task/Complete Project Proposal o/1`
 **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **List**   | `list`

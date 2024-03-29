@@ -44,7 +44,7 @@ public class JsonAdaptedTask {
      */
     public JsonAdaptedTask(Task source) {
         title = source.getTaskTitle();
-        deadline = source.getDeadline().dateTime;
+        deadline = source.getDeadline().getDateTime();
         personInCharge = source.getPersonInCharge().getName().toString();
         isDone = source.isDone();
     }
