@@ -143,7 +143,6 @@ public class ModelManager implements Model {
     public void reassignTask(Task task, Person assignedFrom, Person assignedTo) {
         requireAllNonNull(task, assignedFrom, assignedTo);
         versionedAddressBook.reassignTask(task, assignedFrom, assignedTo);
-
     }
 
     @Override
