@@ -8,6 +8,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.person.Person;
+import seedu.address.model.task.Task;
 
 /**
  * An UI component that displays information of a {@code Person}.
@@ -38,6 +39,8 @@ public class PersonCard extends UiPart<Region> {
     private Label address;
     @FXML
     private Label email;
+    @FXML
+    private Label task;
     @FXML
     private Label efficiency;
     @FXML
@@ -70,5 +73,16 @@ public class PersonCard extends UiPart<Region> {
                     Label tagLabel = new Label(tag.tagName);
                     tags.getChildren().add(tagLabel);
                 });
+        if (person.getTask() != null) {
+            task.setText(displayCurrentTask(person.getTask()));
+        } else {
+            task.setText("No current task");
+        }
+    }
+
+    private String displayCurrentTask(Task t) {
+        String taskTitle = t.getTaskTitle();
+        String deadline = t.getDeadline().toString();
+        return ("Current task: " + taskTitle + " (by " + deadline + ")");
     }
 }
