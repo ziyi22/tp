@@ -3,7 +3,6 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_OWNER;
 
 import java.util.List;
 
@@ -27,10 +26,9 @@ public class EditDeadlineCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Change the deadline of the task of a user.\n"
             + "Parameters: "
-            + PREFIX_TASK_OWNER + "INDEX (must be a positive integer)\n"
+            + "INDEX (must be a positive integer)\n"
             + PREFIX_DEADLINE + "dd-MM-yyyy HHmm \n"
-            + "Example: " + COMMAND_WORD + " "
-            + PREFIX_TASK_OWNER + "1 "
+            + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_DEADLINE + "22-04-2024 2359 ";
 
     public static final String MESSAGE_TASK_DOES_NOT_EXIST = "%s does not have a Task. "
@@ -53,7 +51,7 @@ public class EditDeadlineCommand extends Command {
         requireNonNull(model);
         List<Person> personList = model.getFilteredPersonList();
 
-        if (index.getOneBased() >= personList.size()) {
+        if (index.getOneBased() > personList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
@@ -68,7 +66,23 @@ public class EditDeadlineCommand extends Command {
         model.setTask(task, editedTask);
         model.commitAddressBook();
         return new CommandResult(String.format(MESSAGE_MARK_TASK_SUCCESS,
-                Messages.printName(taskOwner), Messages.printDeadline(task)));
+                Messages.printName(taskOwner), deadline.toString()));
 
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof EditDeadlineCommand)) {
+            return false;
+        }
+
+        EditDeadlineCommand otherEditDeadlineCommand = (EditDeadlineCommand) other;
+        return index.equals(otherEditDeadlineCommand.index)
+                && this.deadline.equals(otherEditDeadlineCommand.deadline);
     }
 }
