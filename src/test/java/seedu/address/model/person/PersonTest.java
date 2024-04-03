@@ -12,7 +12,9 @@ import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BOB;
 
+import java.time.Clock;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 import org.junit.jupiter.api.Test;
 
@@ -21,6 +23,8 @@ import seedu.address.model.task.Task;
 import seedu.address.testutil.PersonBuilder;
 
 public class PersonTest {
+    private final ZoneId fixedZoneId = ZoneId.of("UTC+8");
+    private final Clock fixedClock = Clock.system(fixedZoneId);
 
     @Test
     public void asObservableList_modifyList_throwsUnsupportedOperationException() {
@@ -104,8 +108,9 @@ public class PersonTest {
 
     @Test
     public void updateEfficiency_onDeadline_increaseByOne() {
+        LocalDateTime now = LocalDateTime.now(fixedClock);
         Person person = new PersonBuilder().withEfficiency("50").build();
-        Task task = new Task("On Time Task", new Deadline(LocalDateTime.now()));
+        Task task = new Task("On Time Task", new Deadline(now));
         person.setTask(task);
 
         Efficiency updatedEfficiency = person.updateEfficiency();
@@ -115,8 +120,9 @@ public class PersonTest {
 
     @Test
     public void updateEfficiency_beforeDeadline_increaseAccordingly() {
+        LocalDateTime nowPlusFiveDays = LocalDateTime.now(fixedClock).plusDays(5);
         Person person = new PersonBuilder().withEfficiency("50").build();
-        Task task = new Task("Early Task", new Deadline(LocalDateTime.now().plusDays(5)));
+        Task task = new Task("Early Task", new Deadline(nowPlusFiveDays));
         person.setTask(task);
 
         Efficiency updatedEfficiency = person.updateEfficiency();
@@ -126,8 +132,9 @@ public class PersonTest {
 
     @Test
     public void updateEfficiency_afterDeadline_decreaseAccordingly() {
+        LocalDateTime nowMinusThreeDays = LocalDateTime.now(fixedClock).minusDays(3);
         Person person = new PersonBuilder().withEfficiency("50").build();
-        Task task = new Task("Late Task", new Deadline(LocalDateTime.now().minusDays(3)));
+        Task task = new Task("Late Task", new Deadline(nowMinusThreeDays));
         person.setTask(task);
 
         Efficiency updatedEfficiency = person.updateEfficiency();
