@@ -8,6 +8,7 @@ import java.util.stream.Stream;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.Comment;
 import seedu.address.model.person.Department;
 import seedu.address.model.person.Efficiency;
 import seedu.address.model.person.Email;
@@ -47,8 +48,8 @@ public class AddCommandParser implements Parser<AddCommand> {
         Department department = ParserUtil.parseDepartment(argMultimap.getValue(CliSyntax.PREFIX_DEPARTMENT).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(CliSyntax.PREFIX_TAG));
         Efficiency efficiency = ParserUtil.parseEfficiency(argMultimap.getValue(CliSyntax.PREFIX_EFFICIENCY).get());
-
-        Person person = new Person(name, phone, email, address, department, tagList, efficiency);
+        Comment comment = new Comment("");
+        Person person = new Person(name, phone, email, address, department, tagList, efficiency, comment);
 
         return new AddCommand(person);
     }

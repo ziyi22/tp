@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import seedu.address.model.person.Address;
+import seedu.address.model.person.Comment;
 import seedu.address.model.person.Department;
 import seedu.address.model.person.Efficiency;
 import seedu.address.model.person.Email;
@@ -25,6 +26,8 @@ public class PersonBuilder {
     public static final String DEFAULT_DEPARTMENT = "IT";
     public static final String DEFAULT_EFFICIENCY = "80";
 
+    public static final String DEFAULT_COMMENT = "";
+
     private Name name;
     private Phone phone;
     private Email email;
@@ -32,6 +35,8 @@ public class PersonBuilder {
     private Department department;
     private Set<Tag> tags;
     private Efficiency efficiency;
+
+    private Comment comment;
 
 
     /**
@@ -45,6 +50,7 @@ public class PersonBuilder {
         department = new Department(DEFAULT_DEPARTMENT);
         tags = new HashSet<>();
         efficiency = new Efficiency(DEFAULT_EFFICIENCY);
+        comment = new Comment(DEFAULT_COMMENT);
     }
 
     /**
@@ -58,6 +64,7 @@ public class PersonBuilder {
         department = personToCopy.getDepartment();
         tags = new HashSet<>(personToCopy.getTags());
         efficiency = personToCopy.getEfficiency();
+        comment = personToCopy.getComment();
     }
 
     /**
@@ -116,8 +123,16 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code Comment} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withComment(String comment) {
+        this.comment = new Comment(comment);
+        return this;
+    }
+
     public Person build() {
-        return new Person(name, phone, email, address, department, tags, efficiency);
+        return new Person(name, phone, email, address, department, tags, efficiency, comment);
     }
 
 }

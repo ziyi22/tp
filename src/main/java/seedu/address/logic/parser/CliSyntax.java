@@ -19,4 +19,6 @@ public class CliSyntax {
     public static final Prefix PREFIX_EFFICIENCY = new Prefix("eff/");
     public static final Prefix PREFIX_TASK_OWNER = new Prefix("o/");
 
+    public static final Prefix PREFIX_COMMENT = new Prefix("c/");
+
 }
