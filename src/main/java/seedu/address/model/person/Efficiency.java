@@ -31,6 +31,30 @@ public class Efficiency {
         return test.matches(VALIDATION_REGEX);
     }
 
+    /**
+     * Increases the efficiency by the specified amount.
+     *
+     * @param amount The amount to increase the efficiency by.
+     */
+    public Efficiency increase(int amount) {
+        int currentValue = Integer.parseInt(this.value);
+        int newValue = currentValue + amount;
+        newValue = Math.min(newValue, 100);
+        return new Efficiency(String.valueOf(newValue));
+    }
+
+    /**
+     * Decreases the efficiency by the double specified amount.
+     *
+     * @param amount The amount to decrease the efficiency by.
+     */
+    public Efficiency decrease(int amount) {
+        int currentValue = Integer.parseInt(this.value);
+        int newValue = currentValue - (2 * amount);
+        newValue = Math.max(newValue, 0);
+        return new Efficiency(String.valueOf(newValue));
+    }
+
     @Override
     public String toString() {
         return value;

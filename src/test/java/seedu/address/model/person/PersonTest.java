@@ -12,11 +12,19 @@ import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BOB;
 
+import java.time.Clock;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+
 import org.junit.jupiter.api.Test;
 
+import seedu.address.model.task.Deadline;
+import seedu.address.model.task.Task;
 import seedu.address.testutil.PersonBuilder;
 
 public class PersonTest {
+    private final ZoneId fixedZoneId = ZoneId.of("UTC+8");
+    private final Clock fixedClock = Clock.system(fixedZoneId);
 
     @Test
     public void asObservableList_modifyList_throwsUnsupportedOperationException() {
@@ -96,5 +104,17 @@ public class PersonTest {
                 + ", email=" + ALICE.getEmail() + ", address=" + ALICE.getAddress()
                 + ", department=" + ALICE.getDepartment() + ", tags=" + ALICE.getTags() + "}";
         assertEquals(expected, ALICE.toString());
+    }
+
+    @Test
+    public void updateEfficiency_onDeadline_increaseByOne() {
+        LocalDateTime now = LocalDateTime.now(fixedClock);
+        Person person = new PersonBuilder().withEfficiency("50").build();
+        Task task = new Task("On Time Task", new Deadline(now));
+        person.setTask(task);
+
+        Efficiency updatedEfficiency = person.updateEfficiency();
+
+        assertEquals("51", updatedEfficiency.value);
     }
 }

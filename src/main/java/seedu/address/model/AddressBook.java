@@ -200,7 +200,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         Task editedTask = task.markDone();
         Person target = editedTask.getPersonInCharge();
         Person editedPerson = new Person(target.getName(), target.getPhone(), target.getEmail(),
-                target.getAddress(), target.getDepartment(), target.getTags(), target.getEfficiency());
+                target.getAddress(), target.getDepartment(), target.getTags(), target.updateEfficiency());
         setTask(task, editedTask);
         setPerson(target, editedPerson);
         indicateModified();
