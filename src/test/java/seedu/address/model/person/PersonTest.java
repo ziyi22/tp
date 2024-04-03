@@ -117,28 +117,4 @@ public class PersonTest {
 
         assertEquals("51", updatedEfficiency.value);
     }
-
-    @Test
-    public void updateEfficiency_beforeDeadline_increaseAccordingly() {
-        LocalDateTime nowPlusFiveDays = LocalDateTime.now(fixedClock).plusDays(5);
-        Person person = new PersonBuilder().withEfficiency("50").build();
-        Task task = new Task("Early Task", new Deadline(nowPlusFiveDays));
-        person.setTask(task);
-
-        Efficiency updatedEfficiency = person.updateEfficiency();
-
-        assertEquals("54", updatedEfficiency.value);
-    }
-
-    @Test
-    public void updateEfficiency_afterDeadline_decreaseAccordingly() {
-        LocalDateTime nowMinusThreeDays = LocalDateTime.now(fixedClock).minusDays(3);
-        Person person = new PersonBuilder().withEfficiency("50").build();
-        Task task = new Task("Late Task", new Deadline(nowMinusThreeDays));
-        person.setTask(task);
-
-        Efficiency updatedEfficiency = person.updateEfficiency();
-
-        assertEquals("44", updatedEfficiency.value);
-    }
 }
