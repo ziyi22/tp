@@ -41,8 +41,10 @@ outdated systems, EffiTrack offers a centralized platform for easy and accurate 
    * `edit 1 n/Colby Bryan` : Edits the name of the 1st employee shown in the current list to `Colby Bryan`.
 
    * `delete 3` : Deletes the 3rd employee shown in the current list.
-   
+
    * `find john` : Finds all employees whose name contains `john`.
+   
+   * `findtask report` : Finds all employees whose task contains `report`.
    
    * `filter finance` : Filters the list to display employees who belong to `finance` department.
    
@@ -172,7 +174,7 @@ Examples:
 * `filter resource` returns `Human Resource`, `Resource Management`<br>
   ![result for 'filter finance'](images/filterFinanceResult.png)
 
-### Deleting a n employee : `delete`
+### Deleting an employee : `delete`
 
 Deletes the specified employee from EffiTrack.
 
@@ -222,6 +224,17 @@ Format: `mark task/TASKNAME o/INDEX`
 
 Examples:
 * `mark task/Submit Project o/1` mark the task Submit Project assigned to the first employee in EffiTrack as done.
+
+### Finding a task : `findtask`
+
+Finds the person(s) in charge of the task
+
+Format `findtask KEYWORD`
+
+* The search is case-insensitive. e.g `report` will match `Report`
+* The order of the keywords do not matter. e.g. `report submit` will match `submit report`
+* Only the task name is searched.
+* Partial words will be matched e.g. `report` will match `reports`
 
 ### Clearing all entries : `clear`
 
