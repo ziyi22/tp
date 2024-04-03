@@ -1,6 +1,7 @@
 package seedu.address.model.person;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.model.person.Name.VALIDATION_REGEX;
 
 /**
  * Represents a Person's comment in the address book.
@@ -18,6 +19,13 @@ public class Comment {
     public Comment(String comment) {
         requireNonNull(comment);
         this.comment = comment;
+    }
+
+    /**
+     * Returns true if a given string is a valid name.
+     */
+    public static boolean isValidComment(String test) {
+        return test.matches(VALIDATION_REGEX);
     }
 
     @Override

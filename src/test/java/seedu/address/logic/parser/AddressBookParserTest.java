@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.AssignTaskCommand;
 import seedu.address.logic.commands.ClearCommand;
+import seedu.address.logic.commands.CommentCommand;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
@@ -31,6 +32,7 @@ import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.person.Comment;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.PersonContainsKeywordsPredicate;
@@ -166,6 +168,13 @@ public class AddressBookParserTest {
         EditDeadlineCommand command = (EditDeadlineCommand) parser.parseCommand(EditDeadlineCommand.COMMAND_WORD + " "
                 + INDEX_FIRST_PERSON.getOneBased() + " " + "by/31-10-2024 2359");
         assertEquals(new EditDeadlineCommand(INDEX_FIRST_PERSON, new Deadline("31-10-2024 2359")), command);
+    }
+
+    @Test
+    public void parseCommand_comment() throws Exception {
+        CommentCommand command = (CommentCommand) parser.parseCommand(CommentCommand.COMMAND_WORD + " "
+                + INDEX_FIRST_PERSON.getOneBased() + " " + "c/good communication");
+        assertEquals(new CommentCommand(INDEX_FIRST_PERSON, new Comment("good communication")), command);
     }
 
     @Test
