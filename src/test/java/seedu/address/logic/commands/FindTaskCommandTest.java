@@ -16,6 +16,7 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.TaskContainsKeywordsPredicate;
 
 /**
@@ -61,6 +62,14 @@ public class FindTaskCommandTest {
         expectedModel.updateFilteredPersonList(predicate);
         assertCommandSuccess(command, model, commandHistory, expectedMessage, expectedModel);
         assertEquals(Collections.emptyList(), model.getFilteredPersonList());
+    }
+
+    @Test
+    public void toStringMethod() {
+        TaskContainsKeywordsPredicate predicate = new TaskContainsKeywordsPredicate(Arrays.asList("keyword"));
+        FindTaskCommand findTaskCommand = new FindTaskCommand(predicate);
+        String expected = FindTaskCommand.class.getCanonicalName() + "{predicate=" + predicate + "}";
+        assertEquals(expected, findTaskCommand.toString());
     }
 
     /**
