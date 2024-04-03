@@ -19,6 +19,7 @@ import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
+import seedu.address.logic.commands.EditDeadlineCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FilterCommand;
 import seedu.address.logic.commands.FilterEfficiencyCommand;
@@ -33,6 +34,7 @@ import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.PersonContainsKeywordsPredicate;
 import seedu.address.model.person.PersonLessThanEfficiencyPredicate;
+import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Task;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 import seedu.address.testutil.PersonBuilder;
@@ -57,11 +59,6 @@ public class AddressBookParserTest {
         AssignTaskCommand command = (AssignTaskCommand) parser.parseCommand(
                 TaskUtil.getAssignTaskCommand(task, INDEX_FIRST_PERSON.getOneBased()));
         assertEquals(new AssignTaskCommand(task, INDEX_FIRST_PERSON), command);
-    }
-
-    @Test
-    public void parseCommand_editDeadline() throws Exception {
-
     }
 
     @Test
@@ -154,6 +151,13 @@ public class AddressBookParserTest {
     }
 
     @Test
+    public void parseCommand_editDeadline() throws Exception {
+        EditDeadlineCommand command = (EditDeadlineCommand) parser.parseCommand(EditDeadlineCommand.COMMAND_WORD + " "
+                + INDEX_FIRST_PERSON.getOneBased() + " " + "by/31-10-2024 2359");
+        assertEquals(new EditDeadlineCommand(INDEX_FIRST_PERSON, new Deadline("31-10-2024 2359")), command);
+    }
+
+    @Test
     public void parseCommand_unrecognisedInput_throwsParseException() {
         assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE), ()
             -> parser.parseCommand(""));
@@ -163,4 +167,6 @@ public class AddressBookParserTest {
     public void parseCommand_unknownCommand_throwsParseException() {
         assertThrows(ParseException.class, MESSAGE_UNKNOWN_COMMAND, () -> parser.parseCommand("unknownCommand"));
     }
+
+
 }

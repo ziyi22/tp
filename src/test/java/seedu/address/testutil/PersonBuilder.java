@@ -33,6 +33,7 @@ public class PersonBuilder {
     private Set<Tag> tags;
     private Efficiency efficiency;
 
+
     /**
      * Creates a {@code PersonBuilder} with the default details.
      */

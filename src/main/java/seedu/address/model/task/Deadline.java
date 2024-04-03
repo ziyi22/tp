@@ -26,6 +26,17 @@ public class Deadline {
     }
 
     /**
+     * Constructs a {@code Deadline} using Local Date Time
+     * @param deadline A valid deadline.
+     */
+    public Deadline(String deadline) {
+        DateTimeFormatter f = DateTimeFormatter.ofPattern("dd-MM-yyyy HHmm");
+        this.dateTime = LocalDateTime.parse(deadline, f);
+    }
+
+
+
+    /**
      * Returns true if the deadline is in the correct format.
      */
     public static boolean isValidDeadline(String deadline) {

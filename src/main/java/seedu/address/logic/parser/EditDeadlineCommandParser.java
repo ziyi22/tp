@@ -2,7 +2,6 @@ package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_OWNER;
 
 import java.util.stream.Stream;
 
@@ -23,16 +22,24 @@ public class EditDeadlineCommandParser implements Parser<EditDeadlineCommand> {
      */
     @Override
     public EditDeadlineCommand parse(String userInput) throws ParseException {
-        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(userInput, PREFIX_TASK_OWNER, PREFIX_DEADLINE);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(userInput, PREFIX_DEADLINE);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_TASK_OWNER, PREFIX_DEADLINE)
-                || !argMultimap.getPreamble().isEmpty()) {
+        Index index;
+
+        try {
+            index = ParserUtil.parseIndex(argMultimap.getPreamble());
+        } catch (ParseException pe) {
+            throw new ParseException(String
+                    .format(MESSAGE_INVALID_COMMAND_FORMAT, EditDeadlineCommand.MESSAGE_USAGE), pe);
+        }
+
+        if (!arePrefixesPresent(argMultimap, PREFIX_DEADLINE)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditDeadlineCommand.MESSAGE_USAGE));
         }
-        Index personIndex = ParserUtil.parseIndex(argMultimap.getValue(PREFIX_TASK_OWNER).get());
+
         Deadline deadline = ParserTaskUtil.parseDeadline(argMultimap.getValue(PREFIX_DEADLINE).get());
 
-        return new EditDeadlineCommand(personIndex, deadline);
+        return new EditDeadlineCommand(index, deadline);
     }
 
     /**
