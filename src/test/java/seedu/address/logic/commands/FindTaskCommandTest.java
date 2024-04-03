@@ -7,8 +7,8 @@ import static seedu.address.logic.Messages.MESSAGE_PERSONS_LISTED_OVERVIEW;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalAddressBook.getTypicalAddressBook;
 
-import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +16,6 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.TaskContainsKeywordsPredicate;
 
 /**
@@ -57,7 +56,7 @@ public class FindTaskCommandTest {
     @Test
     public void execute_zeroKeywords_noPersonFound() {
         String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 0);
-        TaskContainsKeywordsPredicate predicate = preparePredicate(" ");
+        TaskContainsKeywordsPredicate predicate = preparePredicate();
         FindTaskCommand command = new FindTaskCommand(predicate);
         expectedModel.updateFilteredPersonList(predicate);
         assertCommandSuccess(command, model, commandHistory, expectedMessage, expectedModel);
@@ -66,7 +65,7 @@ public class FindTaskCommandTest {
 
     @Test
     public void toStringMethod() {
-        TaskContainsKeywordsPredicate predicate = new TaskContainsKeywordsPredicate(Arrays.asList("keyword"));
+        TaskContainsKeywordsPredicate predicate = new TaskContainsKeywordsPredicate(List.of("keyword"));
         FindTaskCommand findTaskCommand = new FindTaskCommand(predicate);
         String expected = FindTaskCommand.class.getCanonicalName() + "{predicate=" + predicate + "}";
         assertEquals(expected, findTaskCommand.toString());
@@ -75,7 +74,7 @@ public class FindTaskCommandTest {
     /**
      * Parses {@code userInput} into a {@code TaskContainsKeywordsPredicate}.
      */
-    private TaskContainsKeywordsPredicate preparePredicate(String userInput) {
-        return new TaskContainsKeywordsPredicate(Arrays.asList(userInput));
+    private TaskContainsKeywordsPredicate preparePredicate() {
+        return new TaskContainsKeywordsPredicate(Collections.singletonList(" "));
     }
 }
