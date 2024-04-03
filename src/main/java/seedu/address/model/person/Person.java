@@ -2,6 +2,8 @@ package seedu.address.model.person;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
@@ -103,6 +105,27 @@ public class Person {
      */
     public Set<Tag> getTags() {
         return Collections.unmodifiableSet(tags);
+    }
+
+    /**
+     * Updates the efficiency value based on when the task was completed,
+     * +1 on the deadline day itself, +N for N days early and -2N for N days late.
+     */
+    public Efficiency updateEfficiency() {
+        if (this.task == null) {
+            return this.efficiency;
+        }
+
+        LocalDateTime deadlineDateTime = this.task.getDeadline().getDateTime();
+        int daysBetween = (int) ChronoUnit.DAYS.between(LocalDateTime.now(), deadlineDateTime);
+
+        if (daysBetween == 0) {
+            return this.efficiency.increase(1);
+        } else if (daysBetween > 0) {
+            return this.efficiency.increase(daysBetween);
+        } else {
+            return this.efficiency.decrease(-daysBetween);
+        }
     }
 
     /**

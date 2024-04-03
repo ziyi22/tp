@@ -14,7 +14,11 @@ import static seedu.address.testutil.TypicalPersons.BOB;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.model.task.Deadline;
+import seedu.address.model.task.Task;
 import seedu.address.testutil.PersonBuilder;
+
+import java.time.LocalDateTime;
 
 public class PersonTest {
 
@@ -96,5 +100,38 @@ public class PersonTest {
                 + ", email=" + ALICE.getEmail() + ", address=" + ALICE.getAddress()
                 + ", department=" + ALICE.getDepartment() + ", tags=" + ALICE.getTags() + "}";
         assertEquals(expected, ALICE.toString());
+    }
+
+    @Test
+    public void updateEfficiency_onDeadline_increaseByOne() {
+        Person person = new PersonBuilder().withEfficiency("50").build();
+        Task task = new Task("On Time Task", new Deadline(LocalDateTime.now()));
+        person.setTask(task);
+
+        Efficiency updatedEfficiency = person.updateEfficiency();
+
+        assertEquals("51", updatedEfficiency.value);
+    }
+
+    @Test
+    public void updateEfficiency_beforeDeadline_increaseAccordingly() {
+        Person person = new PersonBuilder().withEfficiency("50").build();
+        Task task = new Task("Early Task", new Deadline(LocalDateTime.now().plusDays(5)));
+        person.setTask(task);
+
+        Efficiency updatedEfficiency = person.updateEfficiency();
+
+        assertEquals("54", updatedEfficiency.value);
+    }
+
+    @Test
+    public void updateEfficiency_afterDeadline_decreaseAccordingly() {
+        Person person = new PersonBuilder().withEfficiency("50").build();
+        Task task = new Task("Late Task", new Deadline(LocalDateTime.now().minusDays(3)));
+        person.setTask(task);
+
+        Efficiency updatedEfficiency = person.updateEfficiency();
+
+        assertEquals("44", updatedEfficiency.value);
     }
 }
