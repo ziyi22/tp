@@ -8,6 +8,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalAddressBook.getTypicalAddressBook;
 import static seedu.address.testutil.TypicalPersons.ALICE;
+import static seedu.address.testutil.TypicalTasks.TASK_ALICE;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -85,6 +86,22 @@ public class AddressBookTest {
     @Test
     public void getPersonList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> addressBook.getPersonList().remove(0));
+    }
+
+    @Test
+    public void hasTask_nullTask_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> addressBook.hasTask(null));
+    }
+
+    @Test
+    public void hasTask_taskNotInAddressBook_returnsFalse() {
+        assertFalse(addressBook.hasTask(TASK_ALICE));
+    }
+
+    @Test
+    public void hasTask_taskInAddressBook_returnsTrue() {
+        addressBook.addTask(TASK_ALICE);
+        assertTrue(addressBook.hasTask(TASK_ALICE));
     }
 
     @Test

@@ -187,10 +187,21 @@ public class AddressBook implements ReadOnlyAddressBook {
      * Reassigns a task from one person to another person.
      */
     public void reassignTask(Task task, Person oldPic, Person pic) {
-        Task editedTask = new Task(task.getTaskTitle(), task.getDeadline(), task.isDone());
-        editedTask.setPersonInCharge(pic);
-        setTask(task, editedTask);
+        Person removeTaskFrom = removeTaskPic(oldPic);
+        tasks.remove(task);
+
+        assignTask(task, pic);
+
+        setPerson(oldPic, removeTaskFrom);
         indicateModified();
+    }
+
+    private Person removeTaskPic(Person pic) {
+        requireNonNull(pic);
+        Person editedPerson = new Person(pic.getName(), pic.getPhone(), pic.getEmail(),
+                pic.getAddress(), pic.getDepartment(), pic.getTags(), pic.getEfficiency(), pic.getComment());
+        editedPerson.removeTask();
+        return editedPerson;
     }
 
     /**
