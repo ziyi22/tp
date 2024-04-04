@@ -89,6 +89,13 @@ public class Person {
         this.task = task;
     }
 
+    /**
+     * Remove person's {@code Task}
+     */
+    public void removeTask() {
+        this.task = null;
+    }
+
     public boolean isBusy() {
         return this.task != null;
     }

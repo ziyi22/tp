@@ -165,7 +165,6 @@ public class EditCommand extends Command {
             setAddress(toCopy.address);
             setDepartment(toCopy.department);
             setTags(toCopy.tags);
-
         }
 
         /**
