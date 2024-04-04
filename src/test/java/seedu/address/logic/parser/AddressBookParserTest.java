@@ -25,6 +25,7 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FilterCommand;
 import seedu.address.logic.commands.FilterEfficiencyCommand;
 import seedu.address.logic.commands.FindCommand;
+import seedu.address.logic.commands.FindFreePersonCommand;
 import seedu.address.logic.commands.FindTaskCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.HistoryCommand;
@@ -175,6 +176,12 @@ public class AddressBookParserTest {
         CommentCommand command = (CommentCommand) parser.parseCommand(CommentCommand.COMMAND_WORD + " "
                 + INDEX_FIRST_PERSON.getOneBased() + " " + "c/good communication");
         assertEquals(new CommentCommand(INDEX_FIRST_PERSON, new Comment("good communication")), command);
+    }
+
+    @Test
+    public void parseCommand_findFreePerson() throws Exception {
+        assertTrue(parser.parseCommand(FindFreePersonCommand.COMMAND_WORD) instanceof FindFreePersonCommand);
+        assertTrue(parser.parseCommand(FindFreePersonCommand.COMMAND_WORD + " 3") instanceof FindFreePersonCommand);
     }
 
     @Test
