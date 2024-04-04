@@ -46,13 +46,14 @@
                      </children>
             </StackPane>
 
-            <StackPane fx:id="notesPlaceholder" alignment="TOP_LEFT" minHeight="320" prefHeight="320" styleClass="command-pane" VBox.vgrow="ALWAYS">
+            <StackPane fx:id="tasksList" alignment="TOP_LEFT" minHeight="280" prefHeight="320" styleClass="command-pane" VBox.vgrow="ALWAYS">
               <padding>
                 <Insets bottom="5" left="10" right="10" top="5" />
               </padding>
-                     <children>
-                        <Label fx:id="listTitle" text="Notes:" />
-                     </children>
+              <children>
+                <Label fx:id="listTitle" text="Tasks: " />
+              </children>
+
             </StackPane>
           </VBox>
 
