@@ -30,13 +30,15 @@ public class Person {
     private final Set<Tag> tags = new HashSet<>();
     private transient Task task = null;
     private Efficiency efficiency;
+    private final Comment comment;
 
     /**
      * Every field must be present and not null.
      */
     public Person(Name name, Phone phone, Email email, Address address, Department department, Set<Tag> tags,
-                  Efficiency efficiency) {
-        requireAllNonNull(name, phone, email, address, department, tags);
+                  Efficiency efficiency, Comment comment) {
+
+        requireAllNonNull(name, phone, email, address, department, tags, comment);
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -44,6 +46,7 @@ public class Person {
         this.department = department;
         this.tags.addAll(tags);
         this.efficiency = efficiency;
+        this.comment = comment;
     }
 
     public Name getName() {
@@ -67,6 +70,10 @@ public class Person {
     }
     public Efficiency getEfficiency() {
         return efficiency;
+    }
+
+    public Comment getComment() {
+        return comment;
     }
 
 
@@ -167,7 +174,7 @@ public class Person {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, department, tags);
+        return Objects.hash(name, phone, email, address, department, tags, comment);
     }
 
     @Override
@@ -179,6 +186,7 @@ public class Person {
                 .add("address", address)
                 .add("department", department)
                 .add("tags", tags)
+                .add("comment", comment)
                 .toString();
     }
 

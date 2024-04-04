@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.Comment;
 import seedu.address.model.person.Department;
 import seedu.address.model.person.Efficiency;
 import seedu.address.model.person.Email;
@@ -33,6 +34,7 @@ class JsonAdaptedPerson {
     private final String department;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
     private final String efficiency;
+
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
@@ -132,7 +134,9 @@ class JsonAdaptedPerson {
         final Efficiency modelEfficiency = new Efficiency(efficiency);
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelDepartment, modelTags, modelEfficiency);
+        final Comment modelComment = new Comment("");
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelDepartment, modelTags,
+                modelEfficiency, modelComment);
     }
 
 }
