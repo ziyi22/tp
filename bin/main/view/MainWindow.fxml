@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.stage.*?>
+
+<fx:root minHeight="600" minWidth="750" onCloseRequest="#handleExit" title="EffiTrack" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+  <icons>
+    <Image url="@/images/ET_logo.png" />
+  </icons>
+  <scene>
+    <Scene>
+      <stylesheets>
+        <URL value="@DarkTheme.css" />
+        <URL value="@Extensions.css" />
+      </stylesheets>
+
+      <VBox>
+        <MenuBar fx:id="menuBar" VBox.vgrow="NEVER">
+          <Menu mnemonicParsing="false" text="File">
+            <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit" />
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#handleHelp" text="Help" />
+          </Menu>
+        </MenuBar>
+
+        <SplitPane dividerPositions="0.5" VBox.vgrow="ALWAYS">
+          <VBox VBox.vgrow="ALWAYS">
+            <StackPane fx:id="commandBoxPlaceholder" styleClass="command-pane" VBox.vgrow="NEVER">
+              <padding>
+                <Insets bottom="5" left="10" right="10" top="5" />
+              </padding>
+            </StackPane>
+
+            <StackPane fx:id="resultDisplayPlaceholder" minWidth="280" prefWidth="280" styleClass="command-pane" VBox.vgrow="NEVER">
+              <padding>
+                <Insets bottom="5" left="10" right="10" top="5" />
+              </padding>
+                     <children>
+                        <Label text="" />
+                     </children>
+            </StackPane>
+
+            <StackPane fx:id="notesPlaceholder" alignment="TOP_LEFT" minHeight="320" prefHeight="320" styleClass="command-pane" VBox.vgrow="ALWAYS">
+              <padding>
+                <Insets bottom="5" left="10" right="10" top="5" />
+              </padding>
+                     <children>
+                        <Label fx:id="listTitle" text="Notes:" />
+                     </children>
+            </StackPane>
+          </VBox>
+
+          <VBox fx:id="personList" minWidth="440" prefWidth="440" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
+            <padding>
+              <Insets bottom="0" left="0" right="5" top="0" />
+            </padding>
+            <StackPane fx:id="personListPanelPlaceholder" VBox.vgrow="ALWAYS" />
+          </VBox>
+        </SplitPane>
+
+        <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER" />
+      </VBox>
+    </Scene>
+  </scene>
+</fx:root>
