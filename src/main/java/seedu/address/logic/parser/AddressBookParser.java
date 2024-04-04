@@ -19,6 +19,7 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FilterCommand;
 import seedu.address.logic.commands.FilterEfficiencyCommand;
 import seedu.address.logic.commands.FindCommand;
+import seedu.address.logic.commands.FindFreePersonCommand;
 import seedu.address.logic.commands.FindTaskCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.HistoryCommand;
@@ -116,6 +117,9 @@ public class AddressBookParser {
 
         case FindTaskCommand.COMMAND_WORD:
             return new FindTaskCommandParser().parse(arguments);
+
+        case FindFreePersonCommand.COMMAND_WORD:
+            return new FindFreePersonCommand();
 
         default:
             logger.finer("This user input caused a ParseException: " + userInput);

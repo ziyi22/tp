@@ -9,7 +9,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Efficiency {
     public static final String MESSAGE_CONSTRAINTS =
-            "Efficiency should be in the range 0 to 100";
+            "Efficiency should be an integer in the range 0 to 100";
     public static final String VALIDATION_REGEX = "\\b(\\d{1,2}|100)\\b";
     public final String value;
 
