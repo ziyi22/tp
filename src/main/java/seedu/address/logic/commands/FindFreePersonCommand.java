@@ -6,7 +6,7 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.Messages;
 import seedu.address.model.Model;
-import seedu.address.model.person.NoTaskPredicate;
+import seedu.address.model.person.PersonHasNoTaskPredicate;
 
 /**
  * Finds and lists all persons in address book who does not have an active task.
@@ -16,7 +16,7 @@ public class FindFreePersonCommand extends Command {
     public static final String COMMAND_WORD = "findfree";
 
     public static final String MESSAGE_SUCCESS = "Listed all persons without an active task";
-    private final NoTaskPredicate predicate = new NoTaskPredicate();
+    private final PersonHasNoTaskPredicate predicate = new PersonHasNoTaskPredicate();
 
     public FindFreePersonCommand() {
     }
@@ -24,7 +24,7 @@ public class FindFreePersonCommand extends Command {
     @Override
     public CommandResult execute(Model model, CommandHistory history) {
         requireNonNull(model);
-        model.updateFilteredPersonList(new NoTaskPredicate());
+        model.updateFilteredPersonList(new PersonHasNoTaskPredicate());
         return new CommandResult(
                 String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredPersonList().size()));
     }
@@ -36,12 +36,7 @@ public class FindFreePersonCommand extends Command {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof FindCommand)) {
-            return false;
-        }
-
-        FindFreePersonCommand otherFindFreeCommand = (FindFreePersonCommand) other;
-        return predicate.equals(otherFindFreeCommand.predicate);
+        return other instanceof FindFreePersonCommand;
     }
 
     @Override

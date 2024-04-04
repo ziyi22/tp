@@ -1,6 +1,5 @@
 package seedu.address.model.person;
 
-import java.util.List;
 import java.util.function.Predicate;
 
 import seedu.address.commons.util.ToStringBuilder;
@@ -8,28 +7,24 @@ import seedu.address.commons.util.ToStringBuilder;
 /**
  * Tests that a {@code Person}'s {@code Name} has no active task.
  */
-public class NoTaskPredicate implements Predicate<Person> {
-    public NoTaskPredicate() {
+public class PersonHasNoTaskPredicate implements Predicate<Person> {
+    public PersonHasNoTaskPredicate() {
     }
 
     @Override
     public boolean test(Person person) {
-        return person.getTask() == null;
+        return person.isBusy();
     }
 
     @Override
     public boolean equals(Object other) {
+        // Check for identity
         if (other == this) {
             return true;
         }
 
-        // instanceof handles nulls
-        if (!(other instanceof NoTaskPredicate)) {
-            return false;
-        }
-
-        NoTaskPredicate otherNoTaskPredicate = (NoTaskPredicate) other;
-        return this.equals(otherNoTaskPredicate);
+        // Check for correct type
+        return other instanceof PersonHasNoTaskPredicate;
     }
 
     @Override
