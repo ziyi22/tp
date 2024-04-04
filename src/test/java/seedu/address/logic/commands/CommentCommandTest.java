@@ -35,7 +35,7 @@ class CommentCommandTest {
         CommentCommand commentCommand = new CommentCommand(INDEX_FIRST_PERSON,
                 new Comment(editedPerson.getComment().comment));
 
-        String expectedMessage = String.format(MESSAGE_ADD_COMMENT_SUCCESS, firstPerson);
+        String expectedMessage = String.format(MESSAGE_ADD_COMMENT_SUCCESS, editedPerson.getName());
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setPerson(firstPerson, editedPerson);
