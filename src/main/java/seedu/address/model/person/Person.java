@@ -76,7 +76,6 @@ public class Person {
         return comment;
     }
 
-
     public Task getTask() {
         return task;
     }
