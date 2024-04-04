@@ -27,11 +27,16 @@
         <Label fx:id="task" styleClass="cell_small_label" text="\$task" wrapText="true"/>
         <Label fx:id="address" styleClass="cell_small_label" text="\$address" />
         <Label fx:id="email" styleClass="cell_small_label" text="\$email" />
+        <HBox>
+          <Label fx:id="commentLabel" styleClass="cell_small_label" text="Comment: "/>
+          <Label fx:id="comment" styleClass="cell_small_label" text="\$comment"/>
+        </HBox>
       </VBox>
 
       <HBox >
         <HBox alignment="CENTER_LEFT">
             <Label fx:id="phone" styleClass="cell_small_label" text="\$phone" />
+
         </HBox>
 
         <HBox alignment="BOTTOM_RIGHT" HBox.hgrow="ALWAYS" >

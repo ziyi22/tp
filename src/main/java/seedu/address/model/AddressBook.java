@@ -173,7 +173,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void assignTask(Task task, Person pic) {
         Person editedPerson = new Person(pic.getName(), pic.getPhone(), pic.getEmail(),
-                pic.getAddress(), pic.getDepartment(), pic.getTags(), pic.getEfficiency());
+                pic.getAddress(), pic.getDepartment(), pic.getTags(), pic.getEfficiency(), pic.getComment());
 
         addTask(task);
         task.setPersonInCharge(editedPerson);
@@ -187,10 +187,21 @@ public class AddressBook implements ReadOnlyAddressBook {
      * Reassigns a task from one person to another person.
      */
     public void reassignTask(Task task, Person oldPic, Person pic) {
-        Task editedTask = new Task(task.getTaskTitle(), task.getDeadline(), task.isDone());
-        editedTask.setPersonInCharge(pic);
-        setTask(task, editedTask);
+        Person removeTaskFrom = removeTaskPic(oldPic);
+        tasks.remove(task);
+
+        assignTask(task, pic);
+
+        setPerson(oldPic, removeTaskFrom);
         indicateModified();
+    }
+
+    private Person removeTaskPic(Person pic) {
+        requireNonNull(pic);
+        Person editedPerson = new Person(pic.getName(), pic.getPhone(), pic.getEmail(),
+                pic.getAddress(), pic.getDepartment(), pic.getTags(), pic.getEfficiency(), pic.getComment());
+        editedPerson.removeTask();
+        return editedPerson;
     }
 
     /**
@@ -200,7 +211,8 @@ public class AddressBook implements ReadOnlyAddressBook {
         Task editedTask = task.markDone();
         Person target = editedTask.getPersonInCharge();
         Person editedPerson = new Person(target.getName(), target.getPhone(), target.getEmail(),
-                target.getAddress(), target.getDepartment(), target.getTags(), target.updateEfficiency());
+                target.getAddress(), target.getDepartment(), target.getTags(),
+                target.updateEfficiency(), target.getComment());
         setTask(task, editedTask);
         setPerson(target, editedPerson);
         indicateModified();

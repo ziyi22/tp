@@ -58,12 +58,18 @@ public class EditDeadlineCommand extends Command {
         Person taskOwner = personList.get(index.getZeroBased());
 
         if (!taskOwner.isBusy()) {
-            throw new CommandException(MESSAGE_TASK_DOES_NOT_EXIST);
+            throw new CommandException(String.format(MESSAGE_TASK_DOES_NOT_EXIST, taskOwner.getName()));
         }
 
         Task task = taskOwner.getTask();
         Task editedTask = task.editDeadline(deadline);
-        model.setTask(task, editedTask);
+
+        Person editedPerson = new Person(taskOwner.getName(), taskOwner.getPhone(),
+                taskOwner.getEmail(), taskOwner.getAddress(),
+                taskOwner.getDepartment(), taskOwner.getTags(),
+                taskOwner.getEfficiency(), taskOwner.getComment());
+        editedPerson.setTask(editedTask);
+        model.setPerson(taskOwner, editedPerson);
         model.commitAddressBook();
         return new CommandResult(String.format(MESSAGE_MARK_TASK_SUCCESS,
                 Messages.printName(taskOwner), deadline.toString()));

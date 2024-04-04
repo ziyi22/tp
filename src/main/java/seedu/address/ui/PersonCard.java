@@ -43,6 +43,10 @@ public class PersonCard extends UiPart<Region> {
     private Label task;
     @FXML
     private Label efficiency;
+
+    @FXML
+    private Label comment;
+
     @FXML
     private FlowPane tags;
 
@@ -58,6 +62,7 @@ public class PersonCard extends UiPart<Region> {
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
         efficiency.setText(person.getEfficiency().value + "%");
+        comment.setText(person.getComment().comment);
         double efficiencyValue = Double.parseDouble(person.getEfficiency().value);
         if (efficiencyValue < 80 && efficiencyValue > 20) {
             efficiency.setStyle("-fx-text-fill: yellow;");

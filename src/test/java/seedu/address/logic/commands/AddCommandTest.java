@@ -195,6 +195,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public void updateFilteredTaskList(Predicate<Task> predicate) {
+
+        }
+
+        @Override
         public boolean canUndoAddressBook() {
             throw new AssertionError("This method should not be called.");
         }

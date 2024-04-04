@@ -24,6 +24,7 @@ import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.Comment;
 import seedu.address.model.person.Department;
 import seedu.address.model.person.Efficiency;
 import seedu.address.model.person.Email;
@@ -84,6 +85,7 @@ public class EditCommand extends Command {
         Person personToEdit = lastShownList.get(index.getZeroBased());
         Person editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
 
+
         if (!personToEdit.isSamePerson(editedPerson) && model.hasPerson(editedPerson)) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
         }
@@ -108,9 +110,9 @@ public class EditCommand extends Command {
         Department updatedDepartment = editPersonDescriptor.getDepartment().orElse(personToEdit.getDepartment());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
         Efficiency updatedEfficiency = editPersonDescriptor.getEfficiency().orElse(personToEdit.getEfficiency());
-
+        Comment updatedComment = personToEdit.getComment();
         return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedDepartment, updatedTags,
-                updatedEfficiency);
+                updatedEfficiency, updatedComment);
     }
 
     @Override
@@ -163,7 +165,6 @@ public class EditCommand extends Command {
             setAddress(toCopy.address);
             setDepartment(toCopy.department);
             setTags(toCopy.tags);
-
         }
 
         /**

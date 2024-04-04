@@ -151,6 +151,12 @@ public class ModelManager implements Model {
         versionedAddressBook.markTask(task);
     }
 
+    @Override
+    public void updateFilteredTaskList(Predicate<Task> predicate) {
+        requireNonNull(predicate);
+        filteredTasks.setPredicate(predicate);
+    }
+
     //=========== Filtered Person List Accessors =============================================================
 
     /**
