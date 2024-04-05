@@ -96,9 +96,7 @@ public class Task {
         }
 
         return otherTask != null
-                && otherTask.getTaskTitle().equals(getTaskTitle())
-                && otherTask.getDeadline().equals(getDeadline())
-                && otherTask.getPersonInCharge().equals(getPersonInCharge());
+                && otherTask.getTaskTitle().equals(getTaskTitle());
     }
 
     /**

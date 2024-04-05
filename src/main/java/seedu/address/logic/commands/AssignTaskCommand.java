@@ -35,7 +35,8 @@ public class AssignTaskCommand extends Command {
             + PREFIX_DEADLINE + "22-04-2024 2359 "
             + PREFIX_TO + "1";
 
-    public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the address book";
+    public static final String MESSAGE_DUPLICATE_TASK = "This task already existed. \n"
+            + "Please use a different task name.";
     public static final String MESSAGE_PERSON_IS_BUSY = "A task has already been assigned for %1$s.\n"
             + "Please select another person.";
     private final Index index;
@@ -56,7 +57,7 @@ public class AssignTaskCommand extends Command {
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
         if (model.hasTask(task)) {
-            throw new CommandException(MESSAGE_DUPLICATE_TASK);
+            throw new CommandException(String.format(MESSAGE_DUPLICATE_TASK));
         }
 
         List<Person> personList = model.getFilteredPersonList();
