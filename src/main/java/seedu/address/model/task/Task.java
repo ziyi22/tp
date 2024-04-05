@@ -117,7 +117,8 @@ public class Task {
         }
 
         Task otherTask = (Task) other;
-        return taskTitle.equals(otherTask.taskTitle);
+        return taskTitle.equals(otherTask.taskTitle)
+                || personInCharge.equals(otherTask.personInCharge);
     }
 
     @Override
