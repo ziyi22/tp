@@ -70,6 +70,7 @@ public class EditDeadlineCommand extends Command {
                 taskOwner.getEfficiency(), taskOwner.getComment());
         editedPerson.setTask(editedTask);
         model.setPerson(taskOwner, editedPerson);
+        model.setTask(task, editedTask);
         model.commitAddressBook();
         return new CommandResult(String.format(MESSAGE_MARK_TASK_SUCCESS,
                 Messages.printName(taskOwner), deadline.toString()));
