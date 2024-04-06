@@ -262,7 +262,7 @@ Format: `redo`
 
 ### Displaying the command history : `history`
 
-Displays the commands executed from most recent to earliest, inclusive of invalid commands.
+Displays the commands executed from most recent to earliest, inclusive of invalid commands. It only stores commands used in a single session of usage of the program and is cleared if the app is restarted.
 
 Format: `history`
 
