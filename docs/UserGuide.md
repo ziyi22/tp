@@ -108,7 +108,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS d/DEPARTMENT eff/EFFICIENCY
 
 <box type="tip" seamless>
 
-**Tip:** An employee can have any number of tags (including 0)
+**Tip:** An employee can have any number of tags (including 0). Tag names should be alphanumeric.
 </box>
 
 Examples:
