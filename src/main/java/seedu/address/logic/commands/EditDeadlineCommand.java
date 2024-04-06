@@ -3,6 +3,7 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_TASKS;
 
 import java.util.List;
 
@@ -71,6 +72,7 @@ public class EditDeadlineCommand extends Command {
         editedPerson.setTask(editedTask);
         model.setPerson(taskOwner, editedPerson);
         model.setTask(task, editedTask);
+        model.updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
         model.commitAddressBook();
         return new CommandResult(String.format(MESSAGE_MARK_TASK_SUCCESS,
                 Messages.printName(taskOwner), deadline.toString()));
