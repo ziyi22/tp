@@ -138,6 +138,15 @@ Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st employee to be `91234567` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd employee to be `Betsy Crower` and clears all existing tags.
 
+### Edit deadline of a task : `edit_deadline`
+
+Edit the deadline of an employee's task
+
+Format: `edit_deadline INDEX by/dd-MM-yyyy HHmm`
+
+Example:
+* `edit_deadline 1 by/22-04-2024 2359`
+
 ### Locating employees by name: `find`
 
 Finds employees whose names contain any of the given keywords.
@@ -206,7 +215,7 @@ Examples:
 
 Reassign a specific task from one person to another.
 
-Format `reassign from/FROMINDEX to/TONDEX`
+Format `reassign from/FROMINDEX to/TOINDEX`
 
 * Assigns the task, which was previously assigned to person at the specified `FROMINDEX`, to the person at the specified `TOINDEX`
 * The index refers to the index number shown in the displayed employee list.
@@ -266,6 +275,15 @@ Displays the commands executed from most recent to earliest, inclusive of invali
 
 Format: `history`
 
+### Adding a comment to an employee : `comment`
+
+Adds comment to an employee
+
+Format: `comment INDEX c/COMMENT`
+
+Example: 
+* `comment 1 c/ Good at database management.`
+
 ### Saving the data
 
 EffiTrack data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
@@ -317,3 +335,6 @@ Action     | Format, Examples
 **Undo**   | `undo`
 **Redo**   | `redo`
 **History**   | `history`
+**Filter** | `filter KEYWORD [MORE_KEYWORDS]`
+**Edit Deadline** | `edit_deadline INDEX by/dd-MM-yyyy HHmm`
+**Comment** | `comment 1 c/ Good at database management.`
