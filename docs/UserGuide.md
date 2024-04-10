@@ -110,7 +110,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS d/DEPARTMENT eff/EFFICIENCY
 
 <box type="tip" seamless>
 
-**Tip:** An employee can have any number of tags (including 0)
+**Tip:** An employee can have any number of tags (including 0). Tag names should be alphanumeric.
 </box>
 
 Examples:
@@ -139,6 +139,15 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [d/DEPARTMENT] [eff
 Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st employee to be `91234567` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd employee to be `Betsy Crower` and clears all existing tags.
+
+### Edit deadline of a task : `edit_deadline`
+
+Edit the deadline of an employee's task
+
+Format: `edit_deadline INDEX by/dd-MM-yyyy HHmm`
+
+Example:
+* `edit_deadline 1 by/22-04-2024 2359`
 
 ### Locating employees by name: `find`
 
@@ -208,7 +217,7 @@ Examples:
 
 Reassign a specific task from one person to another.
 
-Format `reassign from/FROMINDEX to/TONDEX`
+Format `reassign from/FROMINDEX to/TOINDEX`
 
 * Assigns the task, which was previously assigned to person at the specified `FROMINDEX`, to the person at the specified `TOINDEX`
 * The index refers to the index number shown in the displayed employee list.
@@ -275,9 +284,18 @@ Format: `redo`
 
 ### Displaying the command history : `history`
 
-Displays the commands executed from most recent to earliest, inclusive of invalid commands.
+Displays the commands executed from most recent to earliest, inclusive of invalid commands. It only stores commands used in a single session of usage of the program and is cleared if the app is restarted.
 
 Format: `history`
+
+### Adding a comment to an employee : `comment`
+
+Adds comment to an employee
+
+Format: `comment INDEX c/COMMENT`
+
+Example: 
+* `comment 1 c/ Good at database management.`
 
 ### Saving the data
 
@@ -333,3 +351,6 @@ Action     | Format, Examples
 **Redo**   | `redo`
 **Clear**  | `clear`
 **History**   | `history`
+**Filter** | `filter KEYWORD [MORE_KEYWORDS]`
+**Edit Deadline** | `edit_deadline INDEX by/dd-MM-yyyy HHmm`
+**Comment** | `comment 1 c/ Good at database management.`
