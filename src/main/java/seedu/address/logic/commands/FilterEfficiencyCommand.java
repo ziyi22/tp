@@ -18,7 +18,7 @@ public class FilterEfficiencyCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Filtered out poor performing employees with efficiency less than %d";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Filters employees with efficiency less than threshold given.\n"
+            + ": Filters employees with efficiency less than or equals to threshold given.\n"
             + "Parameters: integer (MUST within the range: 0 to 100)\n"
             + "Example: " + COMMAND_WORD + " 30";
     public static final String MESSAGE_INTEGER_OUT_OF_RANGE = "The input efficiency is out of range (0-100)";
