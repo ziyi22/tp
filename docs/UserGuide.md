@@ -51,6 +51,8 @@ outdated systems, EffiTrack offers a centralized platform for easy and accurate 
    * `assign task/Complete Proposal by/20-05-2024 2359 to/1` :Assigns the task `Complete Proposal` with specific deadline to the 1st employee shown in the current list.
    
    * `mark task/Complete Proposal o/1` : Mark the task `Complete Proposal` assigned to the 1st employee as done.
+   
+   * `filter_efficiency 50` : Filters all employees and list those efficiency less than or equals to `50`.
 
    * `clear` : Deletes all employees.
    
@@ -158,7 +160,7 @@ Examples:
 
 ### Locating employees by department: `filter`
 
-Filter employees by their department or tags
+Filters employees by their department or tags
 
 Format: `filter KEYWORD [MORE_KEYWORDS]`
 
@@ -192,7 +194,7 @@ Examples:
 
 Assign a task to a specific person.
 
-Format: `assign task/task title by/dd-MM-yyyy HHmm to/INDEX`
+Format: `assign task/TASK_TITLE by/dd-MM-yyyy HHmm to/INDEX`
 
 * Assigns the task to the person at the specified `INDEX`
 * The index refers to the index number shown in the displayed person list.
@@ -235,6 +237,17 @@ Format `findtask KEYWORD`
 * The order of the keywords do not matter. e.g. `report submit` will match `submit report`
 * Only the task name is searched.
 * Partial words will be matched e.g. `report` will match `reports`
+
+### Filtering employees by efficiency: `filter_efficiency`
+
+Filters employees with efficiency less than or equals to a given threshold.
+
+Format: `filter_efficiency THRESHOLD`
+
+* The threshold **must be an integer in the range 0 to 100**.
+
+Examples:
+* `filter_efficiency 30` returns employees with efficiency 0 to 30.
 
 ### Clearing all entries : `clear`
 
@@ -305,15 +318,18 @@ _Details coming soon ..._
 Action     | Format, Examples
 -----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS d/DEPARTMENT [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 d/IT t/friend t/colleague`
-**Clear**  | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [d/DEPARTMENT] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Assign Task** | `assign task/TASK TITLE by/dd-MM-yyyy to/INDEX`<br> e.g., `assign task/Complete Project Proposal by/22-05-2023 2359 to/1`
+**Assign Task** | `assign task/TASK_TITLE by/dd-MM-yyyy to/INDEX`<br> e.g., `assign task/Complete Project Proposal by/22-05-2023 2359 to/1`
 **Reassign Task** | `reassign from/FROMINDEX to/TOINDEX`<br> e.g., `reassign from/2 to/1`
 **Mark Task**   | `mark task/TASK o/INDEX` <br> e.g. `mark task/Complete Project Proposal o/1`
-**Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**Find Name**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**Filter Department**  | `filter KEYWORD [MORE_KEYWORDS]`<br> e.g., `filter Finance`
+**Filter Efficiency**   | `filter_efficiency THRESHOLD`<br> e.g., `filter_efficiency 40`
+**Find Task**   | `findtask KEYWORD`<br> e.g., `findtask Project`
 **List**   | `list`
-**Help**   | `help`
+**Clear**  | `clear`
 **Undo**   | `undo`
 **Redo**   | `redo`
+**Clear**  | `clear`
 **History**   | `history`
