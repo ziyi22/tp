@@ -25,7 +25,7 @@ public class FindFreePersonCommandTest {
 
     @Test
     public void execute_multiplePersonsFoundWithNoTasks_multiplePersonFound() {
-        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 4);
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 3);
         FindFreePersonCommand command = new FindFreePersonCommand();
         expectedModel.updateFilteredPersonList(new PersonHasNoTaskPredicate());
         assertCommandSuccess(command, model, commandHistory, expectedMessage, expectedModel);
