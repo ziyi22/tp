@@ -247,7 +247,8 @@ Examples:
 
 ### Finding a task : `findtask`
 
-Finds the person(s) in charge of the task
+Finds the person(s) in charge of the task. Note that this only updates the person list on the right side of the UI, 
+and not the task list and the bottom left corner.
 
 Format `findtask KEYWORD`
 
