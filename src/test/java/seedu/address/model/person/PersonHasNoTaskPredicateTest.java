@@ -28,7 +28,7 @@ class PersonHasNoTaskPredicateTest {
     }
 
     @Test
-    public void test_personIsNotBusy_returnsFalse() {
+    public void test_personIsNotBusy_returnsTrue() {
         // Person is not busy
         PersonHasNoTaskPredicate predicate = new PersonHasNoTaskPredicate();
         assertTrue(predicate.test(new PersonBuilder().build()));
