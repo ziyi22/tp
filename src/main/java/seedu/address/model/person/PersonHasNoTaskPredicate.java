@@ -13,7 +13,7 @@ public class PersonHasNoTaskPredicate implements Predicate<Person> {
 
     @Override
     public boolean test(Person person) {
-        return person.isBusy();
+        return !person.isBusy();
     }
 
     @Override
