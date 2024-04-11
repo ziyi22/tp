@@ -129,7 +129,7 @@ Format: `list`
 
 Edits an existing employee in EffiTrack.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [d/DEPARTMENT] [eff/EFFICIENCY] [t/TAG]…​`
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [d/DEPARTMENT] [t/TAG]…​`
 
 * Edits the employee at the specified `INDEX`. The index refers to the index number shown in the displayed employee list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
@@ -237,6 +237,10 @@ Format: `mark task/TASKNAME o/INDEX`
 * Mark the specified task with `TASKNAME` as done.
 * The index refers to the index number shown in the displayed employee list.
 * The index **must be a positive integer** 1, 2, 3, …​
+* Updates the person in charge's efficiency as such:
+  * Completed on the deadline: efficiency + 1
+  * Completed N days early: efficiency + N
+  * Completed N days late: efficiency - 2N
 
 Examples:
 * `mark task/Submit Project o/1` mark the task Submit Project assigned to the first employee in EffiTrack as done.
