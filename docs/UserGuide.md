@@ -30,7 +30,7 @@ outdated systems, EffiTrack offers a centralized platform for easy and accurate 
 
 1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar EffiTrack.jar` command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
+    <img src="images/Ui.png" width = "770">
 
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
@@ -110,7 +110,9 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS d/DEPARTMENT eff/EFFICIENCY
 
 <box type="tip" seamless>
 
-**Tip:** An employee can have any number of tags (including 0). Tag names should be alphanumeric.
+**Tip:** 
+* An employee can have any number of tags (including 0). 
+* Tags should be alphanumeric without any whitespace. e.g: SisterBrother
 </box>
 
 Examples:
@@ -165,7 +167,9 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 Examples:
 * `find John` returns `john` and `John Doe`
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
+
+  <img src="images/findAlexDavidResult.png" width="770">
+  
 
 ### Locating employees by department: `filter`
 
@@ -183,7 +187,8 @@ Format: `filter KEYWORD [MORE_KEYWORDS]`
 Examples:
 * `filter Finance` returns `Finance` and `Quantitative Finance`
 * `filter resource` returns `Human Resource`, `Resource Management`<br>
-  ![result for 'filter finance'](images/filterFinanceResult.png)
+
+  <img src="images/filterFinanceResult.png" width="770">
 
 ### Deleting an employee : `delete`
 
@@ -334,23 +339,22 @@ _Details coming soon ..._
 ## Command summary
 
 Action     | Format, Examples
------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS d/DEPARTMENT [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 d/IT t/friend t/colleague`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [d/DEPARTMENT] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Assign Task** | `assign task/TASK_TITLE by/dd-MM-yyyy to/INDEX`<br> e.g., `assign task/Complete Project Proposal by/22-05-2023 2359 to/1`
 **Reassign Task** | `reassign from/FROMINDEX to/TOINDEX`<br> e.g., `reassign from/2 to/1`
 **Mark Task**   | `mark task/TASK o/INDEX` <br> e.g. `mark task/Complete Project Proposal o/1`
+**Edit Deadline** | `edit_deadline INDEX by/dd-MM-yyyy HHmm`
 **Find Name**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **Filter Department**  | `filter KEYWORD [MORE_KEYWORDS]`<br> e.g., `filter Finance`
 **Filter Efficiency**   | `filter_efficiency THRESHOLD`<br> e.g., `filter_efficiency 40`
 **Find Task**   | `findtask KEYWORD`<br> e.g., `findtask Project`
+**Comment** | `comment 1 c/ Good at database management.`
 **List**   | `list`
 **Clear**  | `clear`
 **Undo**   | `undo`
 **Redo**   | `redo`
 **Clear**  | `clear`
 **History**   | `history`
-**Filter** | `filter KEYWORD [MORE_KEYWORDS]`
-**Edit Deadline** | `edit_deadline INDEX by/dd-MM-yyyy HHmm`
-**Comment** | `comment 1 c/ Good at database management.`
