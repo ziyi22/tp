@@ -20,7 +20,6 @@ HR departments often struggle to accurately measure employee efficiency, leading
 - [ ] Mark an assigned task as done
 - [ ] Edit deadline of assigned task
 - [ ] Change person in charge of the task
-- [ ] Sort employee based on efficiency
 - [ ] Display upcoming deadlines
 - [ ] Display fire list
 - [ ] Generate efficiency report
