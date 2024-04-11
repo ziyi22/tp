@@ -256,6 +256,12 @@ Format `findtask KEYWORD`
 * Only the task name is searched.
 * Partial words will be matched e.g. `report` will match `reports`
 
+### Finding a free person : `findfree`
+
+Finds the person(s) who has no current task.
+
+Format `findfree`
+
 ### Filtering employees by efficiency: `filter_efficiency`
 
 Filters employees with efficiency less than or equals to a given threshold.
@@ -355,6 +361,7 @@ Action     | Format, Examples
 **Filter Department**  | `filter KEYWORD [MORE_KEYWORDS]`<br> e.g., `filter Finance`
 **Filter Efficiency**   | `filter_efficiency THRESHOLD`<br> e.g., `filter_efficiency 40`
 **Find Task**   | `findtask KEYWORD`<br> e.g., `findtask Project`
+**Find Free Person** | `findfree`
 **Comment** | `comment 1 c/ Good at database management.`
 **List**   | `list`
 **Clear**  | `clear`
