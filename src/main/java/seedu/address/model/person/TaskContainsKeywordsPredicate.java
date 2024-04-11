@@ -22,8 +22,9 @@ public class TaskContainsKeywordsPredicate implements Predicate<Person> {
         }
 
         return keywords.stream()
-                .allMatch(keyword -> person.getTask().toString().toLowerCase().replaceAll("\\s", "")
-                .contains(keyword.toLowerCase()));
+                .allMatch(keyword -> person
+                        .getTask().getTaskTitle().toLowerCase().replaceAll("\\s", "")
+                        .contains(keyword.toLowerCase()));
     }
 
     @Override
