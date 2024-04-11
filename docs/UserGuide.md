@@ -127,7 +127,7 @@ Format: `list`
 
 Edits an existing employee in EffiTrack.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [d/DEPARTMENT] [eff/EFFICIENCY] [t/TAG]…​`
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [d/DEPARTMENT] [t/TAG]…​`
 
 * Edits the employee at the specified `INDEX`. The index refers to the index number shown in the displayed employee list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
@@ -232,6 +232,10 @@ Format: `mark task/TASKNAME o/INDEX`
 * Mark the specified task with `TASKNAME` as done.
 * The index refers to the index number shown in the displayed employee list.
 * The index **must be a positive integer** 1, 2, 3, …​
+* Updates the person in charge's efficiency as such:
+  * Completed on the deadline: efficiency + 1
+  * Completed N days early: efficiency + N
+  * Completed N days late: efficiency - 2N
 
 Examples:
 * `mark task/Submit Project o/1` mark the task Submit Project assigned to the first employee in EffiTrack as done.
@@ -335,7 +339,7 @@ _Details coming soon ..._
 
 Action     | Format, Examples
 -----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS d/DEPARTMENT [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 d/IT t/friend t/colleague`
+**Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS d/DEPARTMENT eff/EFFICIENCY [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 d/IT eff/80 t/friend t/colleague`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [d/DEPARTMENT] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Assign Task** | `assign task/TASK_TITLE by/dd-MM-yyyy to/INDEX`<br> e.g., `assign task/Complete Project Proposal by/22-05-2023 2359 to/1`
