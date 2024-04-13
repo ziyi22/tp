@@ -24,7 +24,7 @@ outdated systems, EffiTrack offers a centralized platform for easy and accurate 
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-1. Download the latest `EffiTrack.jar` from [here](https://github.com/AY2324S2-CS2103T-T14-1/tp/releases/tag/v1.2).
+1. Download the latest `EffiTrack.jar` from [here](https://github.com/AY2324S2-CS2103T-T14-1/tp/releases).
 
 1. Copy the file to the folder you want to use as the _home folder_ for EffiTrack.
 
@@ -90,11 +90,70 @@ outdated systems, EffiTrack offers a centralized platform for easy and accurate 
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
-</box>
+
+**Notes about the parameters:**<br>
+
+* `NAME`: The name of the employee.
+    * Only alphanumeric names with spaces is allowed.
+    * Special characters are not allowed in names.
+    * Employee of the same name are not allowed to be added to EffiTrack, or edit an existing employee's name to the same name as another existing employee in EffiTrack.
+    * `NAME` is case-sensitive (e.g. `john Doe` is not the same as `John Doe`)
+    * `NAME` is space-sensitive (e.g. `John Doe` is not the same as `John      Doe`)
+
+* `PHONE_NUMBER`: The phone number of the employee.
+    * Has a minimum limit of 3 digits and maximum limit of 15 digits.
+
+* `EMAIL`: The email address of the employee.
+    * Valid as long as it follows the format of `local-part@domain and should not include whitespace
+    * `local-part` should only contain alphanumeric characters and the following special characters `+`, `_`, `.` and `-` is allowed.
+    * `local-part` may not start or end with any special characters.
+    * `local-part` must be followed with an `@`.
+    * `domain` is made up of one or more `domain label`.
+        * Each `domain label` is separated by a `.`.
+        * Last `domain label` must be at least 2 characters long.
+        * Each `domain label` must start and end with alphanumeric characters.
+        * Each `domain label` contains alphanumeric characters, separated only by `-`, if any.
+
+* `ADDRESS`: The home address of the employee.
+    * Can take any values, but should not be blank.
+  
+* `DEPARTMENT`: The department of the employee.
+    * Only alphanumeric department names with spaces is allowed.
+    * Special characters are not allowed in department names.
+
+* `EFFICIENCY`: The efficiency score of the employee.
+    * Takes in integer values in the range 0 to 100.
+
+* `TAG`: The tag of the employee.
+    * Should be alphanumeric without any whitespace. e.g: SisterBrother
+  
+* `INDEX`: The index refers to the index number shown in the displayed employee list.
+    * Assigned to employee based on the order added into employee list.
+    * Must be a **positive integer** (e.g. 1, 2, 3, …​) and should not be out of bound of the employee list.
+    * Can only take integer within the maximum bound of `int` data type (up to 2147483647), otherwise it will not be considered as a positive integer.
+
+* `TASK`: The task title of task.
+    * Only alphanumeric task titles with spaces is allowed.
+    * Special characters are not allowed in task titles.
+    * Task of the same task title are not allowed to be assigned to different employees.
+    * `TASK` is case-sensitive (e.g. `project` is not the same as `Project`)
+    * `TASK` is space-sensitive (e.g. `Project A` is not the same as `Project      A`)
+
+* `KEYWORD`: The keyword of the query.
+    * `KEYWORD` is case-insensitive.
+
+* `THRESHOLD`: The threshold of efficiency score of the employee.
+    * Takes in integer values in the range 0 to 100.
+
+* `COMMENT`: The comment about the employee.
+    * Only alphanumeric comments with spaces is allowed.
+    * Special characters are not allowed in comments.
+  
+</>
 
 ### Viewing help : `help`
 
-Shows a message explaning how to access the help page.
+Shows a message explaining how to access the help page.
 
 ![help message](images/helpMessage.png)
 
@@ -112,7 +171,6 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS d/DEPARTMENT eff/EFFICIENCY
 
 **Tip:** 
 * An employee can have any number of tags (including 0). 
-* Tags should be alphanumeric without any whitespace. e.g: SisterBrother
 </box>
 
 Examples:
@@ -311,7 +369,7 @@ Adds comment to an employee
 Format: `comment INDEX c/COMMENT`
 
 Example: 
-* `comment 1 c/ Good at database management.`
+* `comment 1 c/Good at database management.`
 
 ### Saving the data
 
@@ -337,7 +395,7 @@ _Details coming soon ..._
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
+**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous EffiTrack home folder.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -351,10 +409,10 @@ _Details coming soon ..._
 
 Action     | Format, Examples
 -----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS d/DEPARTMENT [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 d/IT t/friend t/colleague`
+**Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS d/DEPARTMENT eff/EFFICIENCY [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 d/IT eff/80 t/friend t/colleague`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [d/DEPARTMENT] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Assign Task** | `assign task/TASK_TITLE by/dd-MM-yyyy to/INDEX`<br> e.g., `assign task/Complete Project Proposal by/22-05-2023 2359 to/1`
+**Assign Task** | `assign task/TASK by/dd-MM-yyyy to/INDEX`<br> e.g., `assign task/Complete Project Proposal by/22-05-2023 2359 to/1`
 **Reassign Task** | `reassign from/FROMINDEX to/TOINDEX`<br> e.g., `reassign from/2 to/1`
 **Mark Task**   | `mark task/TASK o/INDEX` <br> e.g. `mark task/Complete Project Proposal o/1`
 **Edit Deadline** | `edit_deadline INDEX by/dd-MM-yyyy HHmm`
@@ -363,7 +421,7 @@ Action     | Format, Examples
 **Filter Efficiency**   | `filter_efficiency THRESHOLD`<br> e.g., `filter_efficiency 40`
 **Find Task**   | `findtask KEYWORD`<br> e.g., `findtask Project`
 **Find Free Person** | `findfree`
-**Comment** | `comment 1 c/ Good at database management.`
+**Comment** | `comment INDEX c/COMMENT` <br> e.g., `comment 1 c/Good at database management.`
 **List**   | `list`
 **Clear**  | `clear`
 **Undo**   | `undo`

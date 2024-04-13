@@ -553,6 +553,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * **Efficiency Threshold**: A user-defined benchmark in the app, classifying employee performance. For instance, a threshold below 20% indicates poor performance (colour coded in red), while 21-79% suggests problematic performance requiring attention (colour coded in yellow).
 * **Fire list**: List of employees who are below the efficiency threshold.
 * **Key Performance Indicators (KPIs)**: Quantifiable measures used to evaluate the success of an employee or a department in achieving specific objectives.
+* **Duplicate Person**: Person of the same name.
+* **Dupicate Task**: Task of the same task title.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -608,3 +610,11 @@ testers are expected to do more *exploratory* testing.
    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
 1. _{ more test cases …​ }_
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **Appendix: Planned Enhancements**
+
+Team size: 5
+
+1. Handle extreme inputs for name, address, department, tags, email, comment (e.g., a person name with 1000 characters, an index that exceeds the range of `int`). For this version the text will be truncated or not fully shown as handling extreme input is considered as a nice to have feature, which will be implemented in the future version.

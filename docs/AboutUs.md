@@ -33,7 +33,7 @@ We are a team based in the [School of Computing, National University of Singapor
 
 <img src="images/yiwern5.png" width="200px">
 
-[[github](http://github.com/yiwern5)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/yiwern5)] [[portfolio](team/yiwern5.md)]
 
 * Role: Developer
 * Responsibilities: Scheduling and tracking, Deliverables and deadlines, UI
