@@ -113,6 +113,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS d/DEPARTMENT eff/EFFICIENCY
 **Tip:** 
 * An employee can have any number of tags (including 0). 
 * Tags should be alphanumeric without any whitespace. e.g: SisterBrother
+* Adding a new person with the same name (case-sensitive) with an existing person is not possible even if other fields are different
 </box>
 
 Examples:
@@ -134,6 +135,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [d/DEPARTMENT] [t/T
 * Edits the employee at the specified `INDEX`. The index refers to the index number shown in the displayed employee list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
+* Name of employee cannot be edited to a name that already exists even if other fields are different.
 * When editing tags, the existing tags of the employee will be removed i.e adding of tags is not cumulative.
 * You can remove all the employee’s tags by typing `t/` without
     specifying any tags after it.
@@ -311,7 +313,7 @@ Adds comment to an employee
 Format: `comment INDEX c/COMMENT`
 
 Example: 
-* `comment 1 c/ Good at database management.`
+* `comment 1 c/Good at database management.`
 
 ### Saving the data
 
@@ -363,10 +365,12 @@ Action     | Format, Examples
 **Filter Efficiency**   | `filter_efficiency THRESHOLD`<br> e.g., `filter_efficiency 40`
 **Find Task**   | `findtask KEYWORD`<br> e.g., `findtask Project`
 **Find Free Person** | `findfree`
-**Comment** | `comment 1 c/ Good at database management.`
+**Comment** | `comment 1 c/Good at database management.`
 **List**   | `list`
 **Clear**  | `clear`
 **Undo**   | `undo`
 **Redo**   | `redo`
 **Clear**  | `clear`
 **History**   | `history`
+**Help**   | `help`
+**Exit**   | `exit`
