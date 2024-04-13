@@ -32,9 +32,9 @@ public class CommentCommand extends Command {
             + "by the index number used in the last person listing. "
             + "Existing comment will be overwritten by the input.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + "c/ [COMMENT]\n"
+            + "c/[COMMENT]\n"
             + "Example: " + COMMAND_WORD + " 1 "
-            + "c/ Good at database management.";
+            + "c/Good at database management.";
 
     private final Index index;
     private final Comment comment;
