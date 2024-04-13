@@ -38,8 +38,3 @@ Given below are my contributions to the project.
         * Did cosmetic tweaks to existing documentation of features: [\#178](https://github.com/AY2324S2-CS2103T-T14-1/tp/pull/178)
     * Developer Guide:
         * Added future enhancement section.
-
-* **Community**:
-    * PRs reviewed (with non-trivial review comments): [\#12](), [\#32](), [\#19](), [\#42]()
-    * Contributed to forum discussions (examples: [1](), [2](), [3](), [4]())
-    * Reported bugs and suggestions for other teams in the class (examples: [1](), [2](), [3]())
