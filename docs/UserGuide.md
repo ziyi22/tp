@@ -422,7 +422,6 @@ Action     | Format, Examples
 **Filter Department**  | `filter KEYWORD [MORE_KEYWORDS]`<br> e.g., `filter Finance`
 **Filter Efficiency**   | `filter_efficiency THRESHOLD`<br> e.g., `filter_efficiency 40`
 **Find Task**   | `findtask KEYWORD`<br> e.g., `findtask Project`
-**Find Free Person** | `findfree`
 **Comment** | `comment INDEX c/COMMENT` <br> e.g., `comment 1 c/Good at database management.`
 **List**   | `list`
 **Clear**  | `clear`
@@ -432,4 +431,3 @@ Action     | Format, Examples
 **History**   | `history`
 **Help**   | `help`
 **Exit**   | `exit`
-
