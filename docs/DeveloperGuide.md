@@ -352,6 +352,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | HR Manager    | change the deadline for an existing task                     | adjust deadlines as needed to accommodate changing priorities or unforeseen circumstances without any hassle.                                    |
 | `* * *`  | HR Manager    | set deadlines for tasks                                      | easily set deadlines for tasks, enabling precise scheduling and effective time management.                                                       |
 | `* * *`  | HR Manager    | assign employees to departments                              | organize teams effectively and foster better collaboration.                                                                                      |
+| `* * *`  | HR Manager    | view all employee information                                | establish communication in times of need                                                                                                         |
 | `* *`  | HR Manager      | perform flexible searches                                    | obtain search results even if one character matches.                                                                                             |
 | `* *`  | HR Manager      | sort the employee list based on their efficiency             | quickly sort and identify employees based on efficiency metrics, such as productivity levels, task completion rates, or performance evaluations. |
 | `* *`  | HR Manager      | mark assigned task as done                                   | efficiently mark tasks as done, providing a clear indication of progress and facilitating effective task tracking and management.                |
@@ -363,7 +364,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `*`  | HR Manager        | track real time progress of assignments                      | monitor the progress of assignments, facilitating timely intervention and resource allocation as necessary.                                      |
 | `*`  | HR Manager        | undo and redo my commands                                    | easily correct mistakes or revert changes.                                                                                                       |
 | `*`  | HR Manager        | view my command history                                      | recall commands I have executed.                                                                                                                 |
-
+| `*`  | HR Manager        | add comments about employees                                 | make notes                                                                                                                                       |
+| `*`  | HR Manager        | find the person in charge for a task                         | keep accountability                                                                                                                              |
+| `*`  | HR Manager        | find employees without an active task                        | know who to assign task to                                                                                                                       |
 *{More to be added}*
 
 ### Use cases
