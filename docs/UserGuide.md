@@ -146,8 +146,7 @@ outdated systems, EffiTrack offers a centralized platform for easy and accurate 
     * Takes in integer values in the range 0 to 100.
 
 * `COMMENT`: The comment about the employee.
-    * Only alphanumeric comments with spaces is allowed.
-    * Special characters are not allowed in comments.
+    * Can take in any values.
   
 </>
 
