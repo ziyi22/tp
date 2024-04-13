@@ -374,4 +374,3 @@ Action     | Format, Examples
 **History**   | `history`
 **Help**   | `help`
 **Exit**   | `exit`
-
