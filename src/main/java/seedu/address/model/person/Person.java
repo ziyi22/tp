@@ -95,6 +95,10 @@ public class Person {
         this.task = null;
     }
 
+    /**
+     * Check if the person is busy
+     * @return boolean
+     */
     public boolean isBusy() {
         if (this.task == null) {
             return false;
