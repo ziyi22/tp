@@ -80,6 +80,7 @@ public class EditCommand extends Command {
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
         List<Person> lastShownList = model.getFilteredPersonList();
+        List<Task> taskList = model.getFilteredTaskList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
@@ -87,11 +88,14 @@ public class EditCommand extends Command {
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
         Person editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
-        Task taskToEdit = personToEdit.getTask();
-        if (taskToEdit != null) {
-            editedTask = new Task(taskToEdit.getTaskTitle(), taskToEdit.getDeadline(), taskToEdit.isDone());
-            editedTask.setPersonInCharge(editedPerson);
-            editedPerson.setTask(editedTask);
+        for (Task taskToEdit : taskList) {
+            if (taskToEdit.getPersonInCharge().getName() == personToEdit.getName()) {
+                editedTask = new Task(taskToEdit.getTaskTitle(), taskToEdit.getDeadline(), taskToEdit.isDone());
+                editedTask.setPersonInCharge(editedPerson);
+                editedPerson.setTask(editedTask);
+                model.setTask(taskToEdit, editedTask);
+                model.updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
+            }
         }
 
         if (!personToEdit.isSamePerson(editedPerson) && model.hasPerson(editedPerson)) {
@@ -100,10 +104,6 @@ public class EditCommand extends Command {
 
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        if (taskToEdit != null) {
-            model.setTask(taskToEdit, editedTask);
-            model.updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
-        }
         model.commitAddressBook();
         return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson)));
     }

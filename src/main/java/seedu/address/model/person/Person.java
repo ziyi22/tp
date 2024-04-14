@@ -96,7 +96,11 @@ public class Person {
     }
 
     public boolean isBusy() {
-        return this.task != null;
+        if (this.task == null) {
+            return false;
+        } else {
+            return !this.task.isDone();
+        }
     }
 
     /**
