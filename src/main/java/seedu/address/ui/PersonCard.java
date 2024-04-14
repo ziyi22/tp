@@ -78,7 +78,7 @@ public class PersonCard extends UiPart<Region> {
                     Label tagLabel = new Label(tag.tagName);
                     tags.getChildren().add(tagLabel);
                 });
-        if (person.getTask() != null) {
+        if (person.getTask()!=null && !person.getTask().isDone()) {
             task.setText(displayCurrentTask(person.getTask()));
         } else {
             task.setText("No current task");
