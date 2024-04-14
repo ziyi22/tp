@@ -209,11 +209,12 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void markTask(Task task) {
         Person target = task.getPersonInCharge();
-        tasks.remove(target.getTask());
+        Task editedTask = task.markDone();
         Person editedPerson = new Person(target.getName(), target.getPhone(), target.getEmail(),
                 target.getAddress(), target.getDepartment(), target.getTags(),
                 target.updateEfficiency(), target.getComment());
         setPerson(target, editedPerson);
+        setTask(task, editedTask);
         indicateModified();
     }
 
