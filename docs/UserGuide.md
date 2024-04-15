@@ -274,6 +274,7 @@ Format: `assign task/TASK_TITLE by/dd-MM-yyyy HHmm to/INDEX`
 * The index refers to the index number shown in the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
 * The deadline **must be in the correct format**
+* Task box might be displayed in a collapsed form but could be clicked on to expand for full details
 
 Examples:
 * `assign task/Complete Project Proposal by/20-04-2024 2359 to/1` Assign the 'Complete Project Proposal' task to the first person in the address book.
