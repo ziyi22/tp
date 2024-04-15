@@ -87,6 +87,16 @@ public class Task {
     }
 
     /**
+     * Change the person in charge to another person of an immutable task
+     * @return Task an immutable Task instance
+     */
+    public Task changePersonInCharge(Person pic) {
+        Task updatedTask = new Task(this.taskTitle, this.deadline, false);
+        updatedTask.setPersonInCharge(pic);
+        return updatedTask;
+    }
+
+    /**
      * Returns true if both tasks have the same name.
      * This defines a weaker notion of equality between two tasks.
      */
