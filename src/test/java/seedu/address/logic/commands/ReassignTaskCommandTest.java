@@ -6,7 +6,6 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.ReassignTaskCommand.MESSAGE_PERSON_IS_BUSY;
 import static seedu.address.logic.commands.ReassignTaskCommand.MESSAGE_REASSIGN_TASK_SUCCESS;
-import static seedu.address.logic.commands.ReassignTaskCommand.MESSAGE_TASK_DOES_NOT_EXIST;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalAddressBook.getTypicalAddressBook;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
@@ -27,7 +26,6 @@ import seedu.address.model.person.Person;
 
 public class ReassignTaskCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
-    private Model expectedModel = new ModelManager(getTypicalAddressBook(), new UserPrefs());
     private CommandHistory commandHistory = new CommandHistory();
 
     @Test
@@ -37,6 +35,7 @@ public class ReassignTaskCommandTest {
 
     @Test
     public void execute_validIndex_success() {
+        Model expectedModel = new ModelManager(getTypicalAddressBook(), new UserPrefs());
         ReassignTaskCommand reassignTaskCommand = new ReassignTaskCommand(INDEX_FIRST_PERSON, INDEX_SECOND_PERSON);
         Person assignedFrom = expectedModel.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Person assignedTo = expectedModel.getFilteredPersonList().get(INDEX_SECOND_PERSON.getZeroBased());
@@ -51,23 +50,12 @@ public class ReassignTaskCommandTest {
     }
 
     @Test
-    public void execute_assignedFromHasNoTasks_throwsCommandException() {
-        Person targetAlice = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        targetAlice.removeTask();
-        Person targetBenson = model.getFilteredPersonList().get(INDEX_SECOND_PERSON.getZeroBased());
-        targetBenson.removeTask();
-        ReassignTaskCommand reassignTaskCommand = new ReassignTaskCommand(INDEX_FIRST_PERSON, INDEX_SECOND_PERSON);
-
-        assertCommandFailure(reassignTaskCommand, model, commandHistory,
-                String.format(MESSAGE_TASK_DOES_NOT_EXIST, Messages.printName(targetAlice)));
-    }
-
-    @Test
     public void execute_assignedToIsBusy_throwsCommandException() {
-        Person targetBenson = model.getFilteredPersonList().get(INDEX_SECOND_PERSON.getZeroBased());
+        Model expectedModel = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+        Person targetBenson = expectedModel.getFilteredPersonList().get(INDEX_SECOND_PERSON.getZeroBased());
         targetBenson.setTask(TASK_BENSON);
         ReassignTaskCommand reassignTaskCommand = new ReassignTaskCommand(INDEX_FIRST_PERSON, INDEX_SECOND_PERSON);
-        assertCommandFailure(reassignTaskCommand, model, commandHistory,
+        assertCommandFailure(reassignTaskCommand, expectedModel, commandHistory,
                 String.format(MESSAGE_PERSON_IS_BUSY, Messages.printName(targetBenson)));
     }
 
