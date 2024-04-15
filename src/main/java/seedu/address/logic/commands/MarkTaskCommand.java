@@ -74,4 +74,19 @@ public class MarkTaskCommand extends Command {
                 Messages.printName(taskOwner), Messages.printTask(task)));
 
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        if (!(other instanceof MarkTaskCommand)) {
+            return false;
+        }
+
+        MarkTaskCommand otherMarkTaskCommand = (MarkTaskCommand) other;
+        return this.index.equals(otherMarkTaskCommand.index)
+                && this.taskName.equals(otherMarkTaskCommand.taskName);
+    }
 }
