@@ -13,7 +13,6 @@ import seedu.address.model.person.Person;
 import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Task;
 
-
 /**
  * Jackson-friendly version of {@link Task}.
  */
@@ -79,14 +78,15 @@ public class JsonAdaptedTask {
         final Name name = new Name(personInCharge);
 
         // Find the Person object from the personList using the personName
-        final Person modelPic = ab.getPerson(name);
+        Person modelPic = ab.getPerson(name);
 
         if (modelPic == null) {
-            throw new IllegalValueException("Person with name " + personInCharge + " not found!");
+            return null;
         }
 
         Task task = new Task(modelTaskTitle, modelDeadline, isDone);
         ab.assignTask(task, modelPic);
+
         return task;
     }
 }
