@@ -8,19 +8,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.AddressBook;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Department;
-import seedu.address.model.person.Efficiency;
-import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
-import seedu.address.model.person.Phone;
 import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Task;
-
-import static seedu.address.model.util.SampleDataUtil.EMPTY_COMMENT;
-import static seedu.address.model.util.SampleDataUtil.getTagSet;
-
 
 /**
  * Jackson-friendly version of {@link Task}.
