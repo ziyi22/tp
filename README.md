@@ -3,7 +3,7 @@
 
 # EffiTrack
 
-![Ui](docs/images/Ui.png)
+![Ui](docs/images/EmptyTaskListUi.png)
 > Boost productivity, streamline success! Welcome to EffiTrack – where efficiency meets innovation. Revolutionize your workday with seamless employee performance tracking.
 
 ## Value Proposition

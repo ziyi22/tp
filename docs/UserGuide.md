@@ -30,7 +30,7 @@ outdated systems, EffiTrack offers a centralized platform for easy and accurate 
 
 1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar EffiTrack.jar` command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-    <img src="images/Ui.png" width = "770">
+    <img src="images/EmptyTaskListUi.png" width = "770">
 
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
@@ -206,25 +206,25 @@ Examples:
 
 ### Assign a task: `assign`
 
-Assign a task to a specific person.
+Assign a task to a specific employee.
 
 Format: `assign task/TASK_TITLE by/dd-MM-yyyy HHmm to/INDEX`
 
-* Assigns the task to the person at the specified `INDEX`
-* The index refers to the index number shown in the displayed person list.
+* Assigns the task to the employee at the specified `INDEX`
+* The index refers to the index number shown in the displayed employee list.
 * The index **must be a positive integer** 1, 2, 3, …​
 * The deadline **must be in the correct format**
 
 Examples:
-* `assign task/Complete Project Proposal by/20-04-2024 2359 to/1` Assign the 'Complete Project Proposal' task to the first person in the address book.
+* `assign task/Complete Project Proposal by/20-04-2024 2359 to/1` Assign the 'Complete Project Proposal' task to the first employee in EffiTrack.
 
 ### Reassigning a task: `reassign`
 
-Reassign a specific task from one person to another.
+Reassign a specific task from one employee to another.
 
 Format `reassign from/FROMINDEX to/TOINDEX`
 
-* Assigns the task, which was previously assigned to person at the specified `FROMINDEX`, to the person at the specified `TOINDEX`
+* Assigns the task, which was previously assigned to employee at the specified `FROMINDEX`, to the employee at the specified `TOINDEX`
 * The index refers to the index number shown in the displayed employee list.
 * The index **must be a positive integer** 1, 2, 3, …​
 
@@ -243,7 +243,7 @@ Examples:
 
 ### Finding a task : `findtask`
 
-Finds the person(s) in charge of the task
+Finds the employee(s) in charge of the task
 
 Format `findtask KEYWORD`
 
@@ -353,7 +353,7 @@ Action     | Format, Examples
 **Find Task**   | `findtask KEYWORD`<br> e.g., `findtask Project`
 **Comment** | `comment 1 c/ Good at database management.`
 **List**   | `list`
-**Clear**  | `clear`
+**Help**  | `help`
 **Undo**   | `undo`
 **Redo**   | `redo`
 **Clear**  | `clear`
