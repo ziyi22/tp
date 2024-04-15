@@ -14,7 +14,7 @@
 ## **Acknowledgements**
 
 This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org).
-This project consists some commands adapted from [AddressBook-Level4 project](https://github.com/se-edu/addressbook-level4/).
+Redo, undo and history commands are adapted from [AddressBook-Level4 project](https://github.com/se-edu/addressbook-level4/).
 
 --------------------------------------------------------------------------------------------------------------------
 
