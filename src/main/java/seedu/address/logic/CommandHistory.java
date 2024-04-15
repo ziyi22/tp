@@ -6,6 +6,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
+ * @@author yiwern5-reused
+ * Reused from AB4 https://github.com/se-edu/addressbook-level4/
  * Stores the history of commands executed.
  */
 public class CommandHistory {

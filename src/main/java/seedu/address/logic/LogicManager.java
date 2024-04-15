@@ -48,6 +48,14 @@ public class LogicManager implements Logic {
 
     }
 
+    /**
+     * @@author yiwern5-reused
+     * Reused from AB4 https://github.com/se-edu/addressbook-level4/ with minor modifications
+     * @param commandText The command as entered by the user.
+     * @return {@code CommandResult}
+     * @throws CommandException
+     * @throws ParseException
+     */
     @Override
     public CommandResult execute(String commandText) throws CommandException, ParseException {
         logger.info("----------------[USER COMMAND][" + commandText + "]");

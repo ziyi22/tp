@@ -9,6 +9,8 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.model.Model;
 
 /**
+ * @@author yiwern5-reused
+ * Reused from AB4 https://github.com/se-edu/addressbook-level4/
  * Lists all the commands entered by user from the start of app launch.
  */
 public class HistoryCommand extends Command {
