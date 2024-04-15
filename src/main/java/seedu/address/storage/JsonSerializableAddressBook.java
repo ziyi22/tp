@@ -65,6 +65,11 @@ class JsonSerializableAddressBook {
         }
         for (JsonAdaptedTask jsonAdaptedTask : tasks) {
             Task task = jsonAdaptedTask.toModelType(addressBook);
+
+            if (task == null) {
+                continue;
+            }
+
             if (addressBook.hasTask(task)) {
                 continue;
             }

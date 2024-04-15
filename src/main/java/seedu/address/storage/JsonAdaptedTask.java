@@ -8,10 +8,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.AddressBook;
+import seedu.address.model.person.Address;
+import seedu.address.model.person.Department;
+import seedu.address.model.person.Efficiency;
+import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Phone;
 import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Task;
+
+import static seedu.address.model.util.SampleDataUtil.EMPTY_COMMENT;
+import static seedu.address.model.util.SampleDataUtil.getTagSet;
 
 
 /**
@@ -79,14 +87,15 @@ public class JsonAdaptedTask {
         final Name name = new Name(personInCharge);
 
         // Find the Person object from the personList using the personName
-        final Person modelPic = ab.getPerson(name);
+        Person modelPic = ab.getPerson(name);
 
         if (modelPic == null) {
-            throw new IllegalValueException("Person with name " + personInCharge + " not found!");
+            return null;
         }
 
         Task task = new Task(modelTaskTitle, modelDeadline, isDone);
         ab.assignTask(task, modelPic);
+
         return task;
     }
 }
