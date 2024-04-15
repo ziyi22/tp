@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * @@author yiwern5-reused
+ * Reused from AB4 https://github.com/se-edu/addressbook-level4/
  * {@code AddressBook} that keeps track of its own history.
  */
 public class VersionedAddressBook extends AddressBook {
